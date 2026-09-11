@@ -1,43 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CosmoEdu - Astronomia</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header>
-    <div class="logo">✦ COSMO<span>EDU</span></div>
-    <nav>
-        <a href="#inicio">Início</a>
-        <a href="#sistema">Sistema Solar</a>
-        <a href="#universo">Universo</a>
-        <a href="#exploracao">Exploração</a>
-        <a href="#filmes">Filmes</a>
-        <a href="#noticias">Notícias</a>
-        <a href="#jogo">Jogo</a>
-    </nav>
-</header>
-
-<section class="inicio" id="inicio">
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CosmoEdu: portal educacional de astronomia com introdução, curiosidades e conteúdos sobre o Universo.">
+<title>Início | CosmoEdu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/index.css"></head><body>
+<header><a class="logo" href="index.html">✦ COSMO<span>EDU</span></a><nav><a class="active" href="index.html">Início</a><a class="" href="sistema-solar.html">Sistema Solar</a><a class="" href="universo.html">Universo</a><a class="" href="exploracao.html">Exploração</a><a class="" href="filmes.html">Filmes</a><a class="" href="noticias.html">Notícias</a><a class="" href="jogo.html">Jogo</a></nav></header>
+<main><section class="inicio" id="inicio">
     <div class="inicio-texto">
         <p class="azul">ASTRONOMIA • EDUCAÇÃO</p>
         <h1>Olhe para cima.<br><span>Existe muito mais.</span></h1>
         <p>Aprenda de forma simples sobre planetas, estrelas, galáxias e os mistérios do Universo.</p>
-        <a class="botao" href="#sistema">Explorar o Universo →</a>
+        <a class="botao" href="sistema-solar.html">Explorar o Universo →</a>
     </div>
     <div class="inicio-imagem">
         <img src="img/terra.jpg" alt="Terra">
     </div>
-</section>
-
-<section class="introducao">
+</section><section class="introducao page-section">
     <div>
         <p class="azul">00 / ASTRONOMIA</p>
         <h2>O que é<br>astronomia?</h2>
@@ -46,54 +25,7 @@
         <p>Astronomia é a ciência que estuda os corpos celestes e os fenômenos que acontecem no espaço.</p>
         <p>Ela ajuda a entender desde a Lua e os planetas até estrelas, galáxias e o próprio Universo.</p>
     </div>
-</section>
-
-<section class="sistema" id="sistema">
-    <div class="titulo">
-        <p class="azul">01 / SISTEMA SOLAR</p>
-        <h2>Nosso pequeno<br>endereço no cosmos.</h2>
-        <p>Conheça os oito planetas que orbitam o Sol.</p>
-    </div>
-
-    <div class="planetas">
-        <div class="planeta"><img src="img/mercurio.jpg" alt="Mercúrio"><h3>Mercúrio</h3><p>O planeta mais próximo do Sol.</p></div>
-        <div class="planeta"><img src="img/venus.jpg" alt="Vênus"><h3>Vênus</h3><p>Um planeta com temperaturas muito altas.</p></div>
-        <div class="planeta destaque"><img src="img/terra.jpg" alt="Terra"><h3>Terra</h3><p>Nosso planeta e lar da vida.</p></div>
-        <div class="planeta"><img src="img/marte.jpg" alt="Marte"><h3>Marte</h3><p>Conhecido como o planeta vermelho.</p></div>
-        <div class="planeta"><img src="img/jupiter.jpg" alt="Júpiter"><h3>Júpiter</h3><p>O maior planeta do Sistema Solar.</p></div>
-        <div class="planeta"><img src="img/saturno.jpg" alt="Saturno"><h3>Saturno</h3><p>Famoso por seus grandes anéis.</p></div>
-        <div class="planeta"><img src="img/urano.jpg" alt="Urano"><h3>Urano</h3><p>Um gigante de gelo azul-esverdeado.</p></div>
-        <div class="planeta"><img src="img/netuno.jpg" alt="Netuno"><h3>Netuno</h3><p>O planeta mais distante do Sol.</p></div>
-    </div>
-
-    <div class="sistema-final">
-        <p>O Sistema Solar</p>
-        <div class="orbitas">
-            <div class="sol"></div>
-            <div class="ponto ponto1"></div>
-            <div class="ponto ponto2"></div>
-            <div class="ponto ponto3"></div>
-            <div class="ponto ponto4"></div>
-        </div>
-    </div>
-</section>
-
-<section class="universo" id="universo">
-    <div class="titulo">
-        <p class="azul">02 / ALÉM DOS PLANETAS</p>
-        <h2>O Universo<br>é muito maior.</h2>
-    </div>
-    <div class="universo-cards">
-        <div class="card"><div class="icone">✦</div><h3>Estrelas</h3><p>Grandes esferas de gás extremamente quente que produzem energia e luz.</p></div>
-        <div class="card"><div class="icone">◎</div><h3>Galáxias</h3><p>Grandes conjuntos de estrelas, planetas, gases e poeira unidos pela gravidade.</p></div>
-        <div class="card"><div class="icone">◉</div><h3>Exoplanetas</h3><p>Planetas que orbitam estrelas diferentes do nosso Sol.</p></div>
-        <div class="card"><div class="icone">✧</div><h3>Nebulosas</h3><p>Grandes nuvens de gás e poeira encontradas no espaço.</p></div>
-        <div class="card"><div class="icone">◌</div><h3>Buracos negros</h3><p>Regiões do espaço com uma gravidade extremamente forte.</p></div>
-        <div class="card"><div class="icone">☄</div><h3>Cometas</h3><p>Corpos formados principalmente por gelo, poeira e rochas.</p></div>
-    </div>
-</section>
-
-<section class="curiosidades">
+</section><section class="curiosidades">
     <div class="titulo"><p class="azul">03 / CURIOSIDADES</p><h2>Você sabia?</h2></div>
     <div class="lista">
         <div class="curiosidade"><p class="numero">01</p><div><h3>A luz precisa de tempo para viajar.</h3><p>A luz é extremamente rápida, mas ainda precisa de tempo para atravessar grandes distâncias.</p></div></div>
@@ -101,52 +33,6 @@
         <div class="curiosidade"><p class="numero">03</p><div><h3>O Universo está em expansão.</h3><p>As observações mostram que o espaço entre muitas galáxias está aumentando.</p></div></div>
         <div class="curiosidade"><p class="numero">04</p><div><h3>Existem bilhões de galáxias.</h3><p>O Universo observável possui uma quantidade enorme de galáxias.</p></div></div>
     </div>
-</section>
-
-<section class="exploracao" id="exploracao">
-    <div class="titulo"><p class="azul">04 / EXPLORAÇÃO ESPACIAL</p><h2>Algumas conquistas<br>da humanidade.</h2></div>
-    <div class="conquistas">
-        <div><p class="ano">1957</p><h3>Sputnik 1</h3><p>Primeiro satélite artificial colocado em órbita da Terra.</p></div>
-        <div><p class="ano">1969</p><h3>Apollo 11</h3><p>Primeiros seres humanos a chegar à superfície da Lua.</p></div>
-        <div><p class="ano">1990</p><h3>Hubble</h3><p>Telescópio espacial que revolucionou nossa visão do Universo.</p></div>
-        <div><p class="ano">HOJE</p><h3>Novas descobertas</h3><p>Telescópios e sondas continuam estudando o espaço.</p></div>
-    </div>
-</section>
-
-<section class="filmes" id="filmes">
-    <div class="titulo"><p class="azul">05 / FILMES</p><h2>O espaço também<br>está no cinema.</h2><p>Alguns filmes que ajudam a despertar o interesse pela astronomia.</p></div>
-    <div class="filmes-cards">
-        <div class="filme"><img src="img/filme-interestelar.jpg" alt="Interestelar"><div class="filme-texto"><h3>Interestelar</h3><p>Uma viagem espacial em busca de um novo lar para a humanidade.</p></div></div>
-        <div class="filme"><img src="img/filme-marte.jpg" alt="Perdido em Marte"><div class="filme-texto"><h3>Perdido em Marte</h3><p>Um astronauta precisa sobreviver sozinho em Marte.</p></div></div>
-        <div class="filme"><img src="img/filme-apollo.jpg" alt="Apollo 13"><div class="filme-texto"><h3>Apollo 13</h3><p>Uma missão espacial enfrenta problemas durante a viagem.</p></div></div>
-        <div class="filme"><img src="img/filme-gravidade.jpg" alt="Gravidade"><div class="filme-texto"><h3>Gravidade</h3><p>Astronautas enfrentam uma situação perigosa no espaço.</p></div></div>
-    </div>
-</section>
-
-<section class="noticias" id="noticias">
-    <div class="titulo"><p class="azul">06 / NOTÍCIAS</p><h2>O que está<br>acontecendo no espaço?</h2></div>
-    <div class="noticias-cards">
-        <div class="noticia"><p class="azul">ASTRONOMIA</p><h3>Novos telescópios ajudam a observar galáxias muito distantes.</h3><p>Equipamentos modernos permitem estudar regiões cada vez mais distantes do Universo.</p></div>
-        <div class="noticia"><p class="azul">PLANETAS</p><h3>Cientistas continuam procurando novos exoplanetas.</h3><p>A descoberta de planetas fora do Sistema Solar ajuda a entender outros sistemas planetários.</p></div>
-        <div class="noticia"><p class="azul">EXPLORAÇÃO</p><h3>Novas missões continuam explorando o Sistema Solar.</h3><p>Sondas espaciais estudam planetas, luas e outros objetos do nosso sistema.</p></div>
-        <div class="noticia"><p class="azul">UNIVERSO</p><h3>O estudo do Universo continua revelando novos mistérios.</h3><p>Cada nova observação pode ajudar os cientistas a entender melhor como o Universo funciona.</p></div>
-    </div>
-</section>
-
-<section class="jogo" id="jogo">
-    <div class="titulo"><p class="azul">07 / JOGO</p><h2>Explore o espaço.</h2><p>Clique nos asteroides antes que eles desapareçam.</p></div>
-    <div class="jogo-area">
-        <div class="jogo-topo"><p>PONTOS: <span id="pontos">0</span></p><p>TEMPO: <span id="tempo">30</span></p></div>
-        <div id="campo-jogo"><div id="mensagem-jogo"><h3>Missão espacial</h3><p>Clique nos asteroides para ganhar pontos.</p><button onclick="iniciarJogo()">Começar jogo</button></div></div>
-        <div class="jogo-final"><p>Destrua o máximo de asteroides possível.</p><button id="reiniciar" onclick="iniciarJogo()">Reiniciar</button></div>
-    </div>
-</section>
-
-<footer>
-    <div class="logo">✦ COSMO<span>EDU</span></div>
-    <p>Aprender sobre o Universo é descobrir um pouco mais sobre o nosso próprio lugar nele.</p>
-    <p class="rodape">COSMOEDU © 2026</p>
-</footer>
-
-</body>
-</html>
+</section></main>
+<footer><div class="logo">✦ COSMO<span>EDU</span></div><p>Aprender sobre o Universo é descobrir um pouco mais sobre o nosso próprio lugar nele.</p><p class="rodape">COSMOEDU © 2026</p></footer>
+</body></html>
