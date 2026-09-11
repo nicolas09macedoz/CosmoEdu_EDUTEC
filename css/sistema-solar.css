@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #05070d;
+    color: #fff;
+    font-family: "Space Grotesk", Arial, sans-serif;
+    min-width: 1000px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p {
+    color: #a8afc2;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.azul {
+    color: #9da9ff;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    font-family: "Space Mono", monospace;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    height: 82px;
+    padding: 0 55px;
+    background: #05070d;
+    border-bottom: 1px solid #20283b;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #9da9ff;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #a8afc2;
+    font-size: 14px;
+    padding: 10px 0;
+    transition: 0.25s;
+}
+
+nav a:hover,
+nav a.active {
+    color: #fff;
+}
+
+nav a.active {
+    border-bottom: 2px solid #9da9ff;
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+main {
+    width: 1160px;
+    margin: auto;
+}
+
+/* =========================
+   SISTEMA SOLAR
+========================= */
+
+.sistema {
+    padding: 100px 35px 110px;
+    text-align: center;
+}
+
+.titulo {
+    margin-bottom: 50px;
+}
+
+.titulo h2 {
+    font-size: 52px;
+    line-height: 1.05;
+    margin: 18px 0;
+}
+
+.titulo > p:last-child {
+    font-size: 17px;
+}
+
+.sistema .titulo > p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================
+   PLANETAS
+========================= */
+
+.planetas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.planeta {
+    min-height: 265px;
+    padding: 22px;
+
+    background: #10162a;
+    border: 1px solid #252e47;
+
+    text-align: left;
+
+    transition: 0.25s;
+}
+
+.planeta:hover {
+    border-color: #7d89e9;
+    transform: translateY(-6px);
+}
+
+.planeta img {
+    width: 115px;
+    height: 115px;
+
+    object-fit: cover;
+    border-radius: 50%;
+
+    display: block;
+    margin: 0 auto 18px;
+
+    transition: 0.3s;
+}
+
+.planeta:hover img {
+    transform: scale(1.06);
+}
+
+.planeta h3 {
+    font-size: 21px;
+    margin-bottom: 7px;
+}
+
+.planeta p {
+    font-size: 14px;
+}
+
+.destaque {
+    border-color: #7d89e9;
+    box-shadow: 0 0 30px rgba(125, 137, 233, 0.08);
+}
+
+/* =========================
+   FINAL DO SISTEMA
+========================= */
+
+.sistema-final {
+    margin-top: 90px;
+}
+
+.sistema-final > p {
+    font-size: 17px;
+}
+
+/* =========================
+   ÓRBITAS
+========================= */
+
+.orbitas {
+    height: 180px;
+    margin-top: 25px;
+    position: relative;
+}
+
+.sol {
+    width: 36px;
+    height: 36px;
+
+    background: #e8bb55;
+    border-radius: 50%;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    box-shadow: 0 0 35px rgba(232, 187, 85, 0.55);
+}
+
+.orbitas:before,
+.orbitas:after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid #2c3751;
+    border-radius: 50%;
+}
+
+.orbitas:before {
+    width: 360px;
+    height: 95px;
+}
+
+.orbitas:after {
+    width: 600px;
+    height: 145px;
+}
+
+/* =========================
+   PONTOS
+========================= */
+
+.ponto {
+    width: 8px;
+    height: 8px;
+
+    background: #9da9ff;
+    border-radius: 50%;
+
+    position: absolute;
+}
+
+.ponto1 {
+    left: 28%;
+    top: 38%;
+}
+
+.ponto2 {
+    left: 37%;
+    top: 66%;
+}
+
+.ponto3 {
+    left: 67%;
+    top: 35%;
+}
+
+.ponto4 {
+    left: 78%;
+    top: 65%;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+    padding: 60px 20px;
+
+    text-align: center;
+
+    background: #04060b;
+    border-top: 1px solid #20283b;
+}
+
+footer p {
+    max-width: 500px;
+    margin: 16px auto;
+    font-size: 15px;
+}
+
+.rodape {
+    color: #697186;
+    font-size: 12px;
+}

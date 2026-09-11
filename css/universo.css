@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #060913;
+    color: #fff;
+    font-family: "Space Grotesk", Arial, sans-serif;
+    min-width: 1000px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p {
+    color: #aab2c7;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.azul {
+    color: #b2a5ff;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    font-family: "Space Mono", monospace;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    height: 82px;
+    padding: 0 55px;
+    background: #060913;
+    border-bottom: 1px solid #272442;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #b2a5ff;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #aab2c7;
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+nav a:hover,
+nav a.active {
+    color: #fff;
+}
+
+nav a.active {
+    border-bottom: 2px solid #b2a5ff;
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+main {
+    width: 1160px;
+    margin: auto;
+}
+
+/* =========================
+   UNIVERSO
+========================= */
+
+.universo {
+    padding: 100px 35px 120px;
+}
+
+.titulo {
+    margin-bottom: 55px;
+}
+
+.titulo h2 {
+    font-size: 56px;
+    line-height: 1.02;
+    margin-top: 18px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.universo-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    min-height: 235px;
+    padding: 30px;
+
+    background: linear-gradient(
+        145deg,
+        #11152a,
+        #0d1020
+    );
+
+    border: 1px solid #292648;
+
+    transition: 0.25s;
+}
+
+.card:hover {
+    border-color: #8f80dc;
+    transform: translateY(-7px);
+}
+
+.icone {
+    color: #b2a5ff;
+    font-size: 34px;
+}
+
+.card h3 {
+    font-size: 24px;
+    margin: 22px 0 10px;
+}
+
+.card p {
+    font-size: 15px;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+    padding: 60px 20px;
+
+    text-align: center;
+
+    background: #04060b;
+    border-top: 1px solid #272442;
+}
+
+footer p {
+    max-width: 500px;
+    margin: 16px auto;
+    font-size: 15px;
+}
+
+.rodape {
+    color: #697186;
+    font-size: 12px;
+}

@@ -1,0 +1,286 @@
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#05070d;color:#fff;font-family:"Space Grotesk",Arial,sans-serif;min-width:1000px}
+a{text-decoration:none;color:inherit}
+p{color:#a8afc2;font-size:16px;line-height:1.7}
+.azul{color:#9da9ff;font-size:12px;letter-spacing:2.5px;font-family:"Space Mono",monospace}
+header{height:82px;padding:0 55px;background:#05070d;border-bottom:1px solid #20283b;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.logo{font-size:21px;font-weight:700;letter-spacing:.5px}.logo span{color:#9da9ff}
+nav{display:flex;gap:30px;align-items:center}nav a{color:#a8afc2;font-size:14px;font-weight:500;transition:.25s;padding:10px 0}nav a:hover,nav a.active{color:#fff}nav a.active{border-bottom:2px solid #9da9ff}
+main{width:1160px;margin:auto}.inicio{min-height:650px;padding:100px 35px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #20283b}.inicio-texto{width:55%}.inicio h1{font-size:64px;line-height:1.02;margin:24px 0}.inicio h1 span{color:#9da9ff}.inicio-texto>p:not(.azul){max-width:560px;font-size:18px}.botao{display:inline-block;margin-top:32px;padding:15px 25px;background:#9da9ff;color:#080a10;font-size:15px;font-weight:700;border:1px solid #c3c9ff;transition:.25s}.botao:hover{background:#c3c9ff;transform:translateY(-3px)}.inicio-imagem{width:410px;height:410px;display:flex;align-items:center;justify-content:center}.inicio-imagem img{width:350px;height:350px;object-fit:cover;border-radius:50%;box-shadow:0 0 90px rgba(100,120,255,.2)}
+.page-section{padding:90px 35px;border-bottom:1px solid #20283b}.introducao{display:flex;justify-content:space-between;align-items:center}.introducao>div{width:46%}.introducao h2{font-size:46px;line-height:1.05;margin-top:18px}.introducao .texto{border-left:1px solid #38415c;padding-left:40px}.introducao .texto p+p{margin-top:20px}
+.curiosidades{padding:90px 35px;display:flex;gap:70px}.curiosidades .titulo{width:35%}.titulo h2{font-size:46px;line-height:1.08;margin-top:18px}.lista{width:65%}.curiosidade{display:flex;gap:25px;padding:22px 0;border-bottom:1px solid #20283b}.numero{color:#9da9ff;font-family:"Space Mono",monospace;font-size:13px;min-width:28px}.curiosidade h3{font-size:19px;margin-bottom:8px}.curiosidade p{font-size:15px}
+footer{padding:60px 20px;text-align:center;background:#04060b;border-top:1px solid #20283b}footer p{max-width:500px;margin:16px auto;font-size:15px}.rodape{color:#697186;font-size:12px}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #05070d;
+    color: #fff;
+    font-family: "Space Grotesk", Arial, sans-serif;
+    min-width: 1000px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p {
+    color: #a8afc2;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.azul {
+    color: #9da9ff;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    font-family: "Space Mono", monospace;
+}
+
+header {
+    height: 82px;
+    padding: 0 55px;
+    background: #05070d;
+    border-bottom: 1px solid #20283b;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.logo span {
+    color: #9da9ff;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+nav a {
+    color: #a8afc2;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.25s;
+    padding: 10px 0;
+}
+
+nav a:hover,
+nav a.active {
+    color: #fff;
+}
+
+nav a.active {
+    border-bottom: 2px solid #9da9ff;
+}
+
+main {
+    width: 1160px;
+    margin: auto;
+}
+
+/* =========================
+   PÁGINA INICIAL
+========================= */
+
+.inicio {
+    min-height: 650px;
+    padding: 100px 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #20283b;
+}
+
+.inicio-texto {
+    width: 55%;
+}
+
+.inicio h1 {
+    font-size: 64px;
+    line-height: 1.02;
+    margin: 24px 0;
+}
+
+.inicio h1 span {
+    color: #9da9ff;
+}
+
+.inicio-texto > p:not(.azul) {
+    max-width: 560px;
+    font-size: 18px;
+}
+
+.botao {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 15px 25px;
+
+    background: #9da9ff;
+    color: #080a10;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    border: 1px solid #c3c9ff;
+
+    transition: 0.25s;
+}
+
+.botao:hover {
+    background: #c3c9ff;
+    transform: translateY(-3px);
+}
+
+.inicio-imagem {
+    width: 410px;
+    height: 410px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inicio-imagem img {
+    width: 350px;
+    height: 350px;
+
+    object-fit: cover;
+    border-radius: 50%;
+
+    box-shadow: 0 0 90px rgba(100, 120, 255, 0.2);
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+
+.page-section {
+    padding: 90px 35px;
+    border-bottom: 1px solid #20283b;
+}
+
+/* =========================
+   INTRODUÇÃO
+========================= */
+
+.introducao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.introducao > div {
+    width: 46%;
+}
+
+.introducao h2 {
+    font-size: 46px;
+    line-height: 1.05;
+    margin-top: 18px;
+}
+
+.introducao .texto {
+    border-left: 1px solid #38415c;
+    padding-left: 40px;
+}
+
+.introducao .texto p + p {
+    margin-top: 20px;
+}
+
+/* =========================
+   CURIOSIDADES
+========================= */
+
+.curiosidades {
+    padding: 90px 35px;
+
+    display: flex;
+    gap: 70px;
+}
+
+.curiosidades .titulo {
+    width: 35%;
+}
+
+.titulo h2 {
+    font-size: 46px;
+    line-height: 1.08;
+    margin-top: 18px;
+}
+
+.lista {
+    width: 65%;
+}
+
+.curiosidade {
+    display: flex;
+    gap: 25px;
+
+    padding: 22px 0;
+
+    border-bottom: 1px solid #20283b;
+}
+
+.numero {
+    color: #9da9ff;
+    font-family: "Space Mono", monospace;
+    font-size: 13px;
+    min-width: 28px;
+}
+
+.curiosidade h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.curiosidade p {
+    font-size: 15px;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+    padding: 60px 20px;
+
+    text-align: center;
+
+    background: #04060b;
+    border-top: 1px solid #20283b;
+}
+
+footer p {
+    max-width: 500px;
+    margin: 16px auto;
+    font-size: 15px;
+}
+
+.rodape {
+    color: #697186;
+    font-size: 12px;
+}

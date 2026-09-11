@@ -1,0 +1,265 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #04070d;
+    color: #fff;
+    font-family: "Space Grotesk", Arial, sans-serif;
+    min-width: 1000px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p {
+    color: #aab3c7;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.azul {
+    color: #ffcc72;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    font-family: "Space Mono", monospace;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    height: 82px;
+    padding: 0 55px;
+    background: #04070d;
+    border-bottom: 1px solid #2c2e29;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #ffcc72;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #aab3c7;
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+nav a:hover,
+nav a.active {
+    color: #fff;
+}
+
+nav a.active {
+    border-bottom: 2px solid #ffcc72;
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+main {
+    width: 1160px;
+    margin: auto;
+}
+
+.jogo {
+    padding: 100px 35px 120px;
+}
+
+.titulo {
+    margin-bottom: 45px;
+}
+
+.titulo h2 {
+    font-size: 56px;
+    line-height: 1.03;
+    margin-top: 18px;
+}
+
+/* =========================
+   ÁREA DO JOGO
+========================= */
+
+.jogo-area {
+    padding: 25px;
+    background: #0d1420;
+    border: 1px solid #2b374b;
+}
+
+.jogo-topo {
+    display: flex;
+    justify-content: space-between;
+
+    padding-bottom: 18px;
+    border-bottom: 1px solid #2b374b;
+}
+
+.jogo-topo p {
+    font-family: "Space Mono", monospace;
+    font-size: 14px;
+    color: #dce1ef;
+}
+
+.jogo-topo span {
+    color: #ffcc72;
+    font-size: 18px;
+}
+
+/* =========================
+   CAMPO DO JOGO
+========================= */
+
+#campo-jogo {
+    height: 500px;
+    margin-top: 18px;
+
+    background: #050a13;
+    border: 1px solid #202d42;
+
+    position: relative;
+    overflow: hidden;
+
+    background-image: radial-gradient(
+        #26344b 1px,
+        transparent 1px
+    );
+
+    background-size: 35px 35px;
+}
+
+/* =========================
+   MENSAGEM DO JOGO
+========================= */
+
+#mensagem-jogo {
+    width: 380px;
+    padding: 35px;
+
+    background: #111b2b;
+    border: 1px solid #66748f;
+
+    text-align: center;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+#mensagem-jogo h3 {
+    font-size: 26px;
+    margin-bottom: 12px;
+}
+
+#mensagem-jogo p {
+    margin-bottom: 24px;
+}
+
+#mensagem-jogo button,
+#reiniciar {
+    padding: 12px 22px;
+
+    border: 0;
+
+    background: #ffcc72;
+    color: #111722;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+#mensagem-jogo button:hover,
+#reiniciar:hover {
+    background: #ffe0a2;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   ASTEROIDES
+========================= */
+
+.asteroide {
+    position: absolute;
+    font-size: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* =========================
+   FINAL DO JOGO
+========================= */
+
+.jogo-final {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 18px;
+}
+
+.jogo-final p {
+    font-size: 15px;
+}
+
+#reiniciar {
+    border: 1px solid #ffcc72;
+    background: transparent;
+    color: #ffcc72;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+    padding: 60px 20px;
+
+    text-align: center;
+
+    background: #04060b;
+    border-top: 1px solid #2c2e29;
+}
+
+footer p {
+    max-width: 500px;
+    margin: 16px auto;
+    font-size: 15px;
+}
+
+.rodape {
+    color: #697186;
+    font-size: 12px;
+}

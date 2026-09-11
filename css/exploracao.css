@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #05080d;
+    color: #fff;
+    font-family: "Space Grotesk", Arial, sans-serif;
+    min-width: 1000px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p {
+    color: #a8afc2;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.azul {
+    color: #8fd7ff;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    font-family: "Space Mono", monospace;
+}
+
+header {
+    height: 82px;
+    padding: 0 55px;
+    background: #05080d;
+    border-bottom: 1px solid #20303d;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #8fd7ff;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #a8afc2;
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+nav a:hover,
+nav a.active {
+    color: #fff;
+}
+
+nav a.active {
+    border-bottom: 2px solid #8fd7ff;
+}
+
+main {
+    width: 1160px;
+    margin: auto;
+}
+
+.exploracao {
+    padding: 100px 35px 120px;
+}
+
+.titulo {
+    margin-bottom: 55px;
+}
+
+.titulo h2 {
+    font-size: 56px;
+    line-height: 1.03;
+    margin-top: 18px;
+}
+
+.conquistas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.conquistas div {
+    min-height: 260px;
+    padding: 28px;
+    background: #0e1720;
+    border: 1px solid #263946;
+
+    transition: 0.25s;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.conquistas div:hover {
+    border-color: #6ec8f3;
+    transform: translateY(-7px);
+}
+
+.ano {
+    color: #8fd7ff;
+    font-family: "Space Mono", monospace;
+    font-size: 15px;
+}
+
+.conquistas h3 {
+    font-size: 24px;
+    margin: 20px 0 12px;
+}
+
+.conquistas div > p:last-child {
+    margin-top: auto;
+    font-size: 15px;
+}
+
+footer {
+    padding: 60px 20px;
+    text-align: center;
+    background: #04060b;
+    border-top: 1px solid #20303d;
+}
+
+footer p {
+    max-width: 500px;
+    margin: 16px auto;
+    font-size: 15px;
+}
+
+.rodape {
+    color: #697186;
+    font-size: 12px;
+}
