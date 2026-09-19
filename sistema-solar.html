@@ -1,39 +1,239 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="CosmoEdu: conheça os oito planetas do Sistema Solar de forma simples e visual.">
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Sistema Solar | CosmoEdu</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/sistema-solar.css"></head><body>
-<header><a class="logo" href="index.html">✦ COSMO<span>EDU</span></a><nav><a class="" href="index.html">Início</a><a class="active" href="sistema-solar.html">Sistema Solar</a><a class="" href="universo.html">Universo</a><a class="" href="exploracao.html">Exploração</a><a class="" href="filmes.html">Filmes</a><a class="" href="noticias.html">Notícias</a><a class="" href="jogo.html">Jogo</a></nav></header>
-<main><section class="sistema" id="sistema">
-    <div class="titulo">
-        <p class="azul">01 / SISTEMA SOLAR</p>
-        <h2>Nosso pequeno<br>endereço no cosmos.</h2>
-        <p>Conheça os oito planetas que orbitam o Sol.</p>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/sistema-solar.css">
+<script src="./JavaScript/sistema-solar.js" defer></script>
+
+</head>
+
+<body>
+
+<header>
+
+
+<a class="logo" href="index.html">
+    ✦ COSMO<span>EDU</span>
+</a>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a class="active" href="sistema-solar.html">Sistema Solar</a>
+    <a href="universo.html">Universo</a>
+    <a href="exploracao.html">Exploração</a>
+    <a href="filmes.html">Filmes</a>
+    <a href="noticias.html">Notícias</a>
+    <a href="jogo.html">Jogo</a>
+</nav>
+
+
+</header>
+
+<main>
+
+<section class="sistema">
+
+
+<div class="titulo">
+
+    <p class="azul">01 / SISTEMA SOLAR</p>
+
+    <h1>
+        Nosso pequeno<br>
+        endereço no cosmos.
+    </h1>
+
+    <p>
+        Explore os oito planetas que orbitam o Sol.
+        Clique em um planeta para descobrir mais.
+    </p>
+
+</div>
+
+
+<div class="planetas">
+
+    <div class="planeta" data-planeta="mercurio">
+        <div class="numero">01</div>
+        <img src="img/mercurio.jpg" alt="Mercúrio">
+        <h3>Mercúrio</h3>
+        <p>O planeta mais próximo do Sol.</p>
+        <span class="ver"></span>
     </div>
 
-    <div class="planetas">
-        <div class="planeta"><img src="img/mercurio.jpg" alt="Mercúrio"><h3>Mercúrio</h3><p>O planeta mais próximo do Sol.</p></div>
-        <div class="planeta"><img src="img/venus.jpg" alt="Vênus"><h3>Vênus</h3><p>Um planeta com temperaturas muito altas.</p></div>
-        <div class="planeta destaque"><img src="img/terra.jpg" alt="Terra"><h3>Terra</h3><p>Nosso planeta e lar da vida.</p></div>
-        <div class="planeta"><img src="img/marte.jpg" alt="Marte"><h3>Marte</h3><p>Conhecido como o planeta vermelho.</p></div>
-        <div class="planeta"><img src="img/jupiter.jpg" alt="Júpiter"><h3>Júpiter</h3><p>O maior planeta do Sistema Solar.</p></div>
-        <div class="planeta"><img src="img/saturno.jpg" alt="Saturno"><h3>Saturno</h3><p>Famoso por seus grandes anéis.</p></div>
-        <div class="planeta"><img src="img/urano.jpg" alt="Urano"><h3>Urano</h3><p>Um gigante de gelo azul-esverdeado.</p></div>
-        <div class="planeta"><img src="img/netuno.jpg" alt="Netuno"><h3>Netuno</h3><p>O planeta mais distante do Sol.</p></div>
+
+    <div class="planeta" data-planeta="venus">
+        <div class="numero">02</div>
+        <img src="img/venus.jpg" alt="Vênus">
+        <h3>Vênus</h3>
+        <p>Um planeta com temperaturas muito altas.</p>
+        <span class="ver"></span>
     </div>
 
-    <div class="sistema-final">
-        <p>O Sistema Solar</p>
-        <div class="orbitas">
-            <div class="sol"></div>
+
+    <div class="planeta destaque" data-planeta="terra">
+        <div class="numero">03</div>
+        <img src="img/terra.jpg" alt="Terra">
+        <h3>Terra</h3>
+        <p>Nosso planeta e lar da vida.</p>
+        <span class="ver"></span>
+    </div>
+
+
+    <div class="planeta" data-planeta="marte">
+        <div class="numero">04</div>
+        <img src="img/marte.jpg" alt="Marte">
+        <h3>Marte</h3>
+        <p>Conhecido como o planeta vermelho.</p>
+        <span class="ver"></span>
+    </div>
+
+
+    <div class="planeta" data-planeta="jupiter">
+        <div class="numero">05</div>
+        <img src="img/jupiter.jpg" alt="Júpiter">
+        <h3>Júpiter</h3>
+        <p>O maior planeta do Sistema Solar.</p>
+        <span class="ver"></span>
+    </div>
+
+
+    <div class="planeta" data-planeta="saturno">
+        <div class="numero">06</div>
+        <img src="img/saturno.jpg" alt="Saturno">
+        <h3>Saturno</h3>
+        <p>Famoso por seus grandes anéis.</p>
+        <span class="ver"></span>
+    </div>
+
+
+    <div class="planeta" data-planeta="urano">
+        <div class="numero">07</div>
+        <img src="img/urano.jpg" alt="Urano">
+        <h3>Urano</h3>
+        <p>Um gigante de gelo azul-esverdeado.</p>
+        <span class="ver"></span>
+    </div>
+
+
+    <div class="planeta" data-planeta="netuno">
+        <div class="numero">08</div>
+        <img src="img/netuno.jpg" alt="Netuno">
+        <h3>Netuno</h3>
+        <p>O planeta mais distante do Sol.</p>
+        <span class="ver"></span>
+    </div>
+
+</div>
+
+
+<div class="sistema-final">
+
+    <p>O Sistema Solar</p>
+
+    <div class="orbitas">
+
+        <div class="sol"></div>
+
+        <div class="orbita orbita1">
             <div class="ponto ponto1"></div>
+        </div>
+
+        <div class="orbita orbita2">
             <div class="ponto ponto2"></div>
+        </div>
+
+        <div class="orbita orbita3">
             <div class="ponto ponto3"></div>
+        </div>
+
+        <div class="orbita orbita4">
             <div class="ponto ponto4"></div>
         </div>
+
     </div>
-</section></main>
-<footer><div class="logo">✦ COSMO<span>EDU</span></div><p>Aprender sobre o Universo é descobrir um pouco mais sobre o nosso próprio lugar nele.</p><p class="rodape">COSMOEDU © 2026</p></footer>
-</body></html>
+
+</div>
+
+
+</section>
+
+</main>
+
+<div class="modal" id="modal">
+
+
+<div class="modal-conteudo">
+
+    <button class="fechar" id="fechar">×</button>
+
+    <img id="modal-imagem" src="" alt="">
+
+    <div class="modal-texto">
+
+        <p class="azul" id="modal-numero"></p>
+
+        <h2 id="modal-titulo"></h2>
+
+        <p id="modal-descricao"></p>
+
+        <div class="informacoes">
+
+            <div>
+                <span>TIPO</span>
+                <strong id="modal-tipo"></strong>
+            </div>
+
+            <div>
+                <span>DIÂMETRO</span>
+                <strong id="modal-diametro"></strong>
+            </div>
+
+            <div>
+                <span>ANO</span>
+                <strong id="modal-ano"></strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<footer>
+
+
+<div class="logo">
+    ✦ COSMO<span>EDU</span>
+</div>
+
+<p>
+    Aprender sobre o Universo é descobrir um pouco mais
+    sobre o nosso próprio lugar nele.
+</p>
+
+<p class="rodape">
+    COSMOEDU © 2026
+</p>
+
+
+</footer>
+
+
+
+</body>
+</html>

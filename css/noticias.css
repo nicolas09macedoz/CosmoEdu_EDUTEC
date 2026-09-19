@@ -9,10 +9,27 @@ html {
 }
 
 body {
-    background: #05090a;
-    color: #fff;
+    background:
+        radial-gradient(circle at 15% 15%, rgba(114, 224, 208, 0.10), transparent 28%),
+        radial-gradient(circle at 85% 80%, rgba(80, 130, 255, 0.10), transparent 30%),
+        #05090a;
+    color: #ffffff;
     font-family: "Space Grotesk", Arial, sans-serif;
     min-width: 1000px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.25;
+    background-image:
+        radial-gradient(circle, #ffffff 1px, transparent 1px),
+        radial-gradient(circle, #72e0d0 1px, transparent 1px);
+    background-size: 150px 150px, 230px 230px;
+    background-position: 20px 40px, 100px 120px;
+    z-index: -1;
 }
 
 a {
@@ -22,39 +39,38 @@ a {
 
 p {
     color: #a9b8b7;
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 17px;
+    line-height: 1.75;
 }
 
 .azul {
     color: #72e0d0;
-    font-size: 12px;
-    letter-spacing: 2.5px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
     font-family: "Space Mono", monospace;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header {
     height: 82px;
     padding: 0 55px;
-    background: #05090a;
+    background: rgba(5, 9, 10, 0.92);
     border-bottom: 1px solid #203432;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
+    backdrop-filter: blur(12px);
 }
 
 .logo {
-    font-size: 21px;
+    font-size: 24px;
     font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .logo span {
@@ -63,27 +79,42 @@ header {
 
 nav {
     display: flex;
-    gap: 30px;
+    align-items: center;
+    gap: 32px;
 }
 
 nav a {
-    color: #a9b8b7;
-    font-size: 14px;
+    position: relative;
+    color: #9cacab;
+    font-size: 15px;
+    font-weight: 500;
     padding: 10px 0;
+    transition: 0.3s;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 0;
+    height: 2px;
+    background: #72e0d0;
+    box-shadow: 0 0 10px rgba(114, 224, 208, 0.8);
+    transition: 0.3s;
 }
 
 nav a:hover,
 nav a.active {
-    color: #fff;
+    color: #ffffff;
 }
 
-nav a.active {
-    border-bottom: 2px solid #72e0d0;
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
 }
 
-/* =========================
-   CONTEÚDO
-========================= */
+/* CONTEÚDO */
 
 main {
     width: 1160px;
@@ -91,74 +122,207 @@ main {
 }
 
 .noticias {
-    padding: 100px 35px 120px;
+    padding: 105px 35px 125px;
 }
 
 .titulo {
-    margin-bottom: 55px;
+    max-width: 800px;
+    margin-bottom: 60px;
+    animation: aparecer 0.7s ease;
+}
+
+.titulo .azul {
+    display: inline-block;
+    margin-bottom: 5px;
 }
 
 .titulo h2 {
-    font-size: 56px;
-    line-height: 1.03;
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -2px;
     margin-top: 18px;
+    background: linear-gradient(90deg, #ffffff, #72e0d0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* =========================
-   CARDS DE NOTÍCIAS
-========================= */
+.titulo p {
+    max-width: 680px;
+    margin-top: 22px;
+    font-size: 18px;
+}
+
+/* CARDS */
 
 .noticias-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 24px;
 }
 
 .noticia {
-    min-height: 245px;
-    padding: 30px;
-
-    background: #0d1717;
+    min-height: 285px;
+    padding: 34px;
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(145deg, rgba(16, 31, 30, 0.98), rgba(8, 16, 16, 0.98));
     border: 1px solid #263c3a;
+    border-radius: 14px;
+    transition: 0.35s ease;
+    animation: subir 0.7s ease both;
+}
 
-    transition: 0.25s;
+.noticia:nth-child(2) {
+    animation-delay: 0.08s;
+}
+
+.noticia:nth-child(3) {
+    animation-delay: 0.16s;
+}
+
+.noticia:nth-child(4) {
+    animation-delay: 0.24s;
+}
+
+.noticia::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #72e0d0, transparent);
+}
+
+.noticia::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -100px;
+    bottom: -100px;
+    background: rgba(114, 224, 208, 0.08);
+    border-radius: 50%;
+    filter: blur(25px);
+    transition: 0.35s;
 }
 
 .noticia:hover {
+    transform: translateY(-9px);
     border-color: #72e0d0;
-    transform: translateY(-7px);
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.45),
+        0 0 25px rgba(114, 224, 208, 0.08);
+}
+
+.noticia:hover::after {
+    background: rgba(114, 224, 208, 0.16);
+}
+
+.noticia .azul {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    padding: 7px 11px;
+    background: #10211f;
+    border: 1px solid #294642;
+    border-radius: 5px;
+    font-size: 11px;
 }
 
 .noticia h3 {
-    font-size: 24px;
-    line-height: 1.3;
-    margin: 18px 0 14px;
+    position: relative;
+    z-index: 2;
+    font-size: 27px;
+    line-height: 1.25;
+    margin: 21px 0 15px;
+    transition: 0.3s;
+}
+
+.noticia:hover h3 {
+    color: #72e0d0;
 }
 
 .noticia p:last-child {
-    font-size: 15px;
+    position: relative;
+    z-index: 2;
+    font-size: 16px;
+    color: #a9b8b7;
 }
 
-/* =========================
-   RODAPÉ
-========================= */
+/* RODAPÉ */
 
 footer {
-    padding: 60px 20px;
-
+    padding: 70px 20px;
     text-align: center;
-
-    background: #04060b;
+    background: #040607;
     border-top: 1px solid #203432;
 }
 
+footer .logo {
+    font-size: 24px;
+}
+
 footer p {
-    max-width: 500px;
-    margin: 16px auto;
-    font-size: 15px;
+    max-width: 560px;
+    margin: 18px auto;
+    font-size: 16px;
 }
 
 .rodape {
-    color: #697186;
-    font-size: 12px;
+    color: #697977;
+    font-size: 13px;
+}
+
+/* SELEÇÃO */
+
+::selection {
+    background: #72e0d0;
+    color: #05090a;
+}
+
+/* ROLAGEM */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #05090a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #294642;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #72e0d0;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes subir {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

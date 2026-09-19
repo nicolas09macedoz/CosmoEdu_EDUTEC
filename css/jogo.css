@@ -9,10 +9,26 @@ html {
 }
 
 body {
-    background: #04070d;
-    color: #fff;
-    font-family: "Space Grotesk", Arial, sans-serif;
     min-width: 1000px;
+    background:
+        radial-gradient(circle at 50% 15%, rgba(60, 150, 255, 0.16), transparent 35%),
+        radial-gradient(circle at 10% 80%, rgba(80, 110, 255, 0.10), transparent 30%),
+        #050914;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(143,215,255,.6) 1px, transparent 1px);
+    background-size: 120px 120px, 200px 200px;
+    background-position: 20px 30px, 80px 100px;
+    opacity: .25;
 }
 
 a {
@@ -20,246 +36,334 @@ a {
     color: inherit;
 }
 
-p {
-    color: #aab3c7;
-    font-size: 16px;
-    line-height: 1.7;
-}
-
-.azul {
-    color: #ffcc72;
-    font-size: 12px;
-    letter-spacing: 2.5px;
-    font-family: "Space Mono", monospace;
-}
-
-/* =========================
-   HEADER
-========================= */
-
 header {
     height: 82px;
     padding: 0 55px;
-    background: #04070d;
-    border-bottom: 1px solid #2c2e29;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
+    background: rgba(5, 9, 20, .82);
+    border-bottom: 1px solid rgba(143, 215, 255, .15);
+    backdrop-filter: blur(18px);
 }
 
 .logo {
-    font-size: 21px;
-    font-weight: 700;
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
 .logo span {
-    color: #ffcc72;
+    color: #8fd7ff;
 }
 
 nav {
     display: flex;
-    gap: 30px;
+    gap: 27px;
 }
 
 nav a {
-    color: #aab3c7;
+    color: #78869e;
     font-size: 14px;
-    padding: 10px 0;
+    transition: .3s;
 }
 
 nav a:hover,
 nav a.active {
-    color: #fff;
+    color: #8fd7ff;
 }
-
-nav a.active {
-    border-bottom: 2px solid #ffcc72;
-}
-
-/* =========================
-   CONTEÚDO
-========================= */
 
 main {
-    width: 1160px;
-    margin: auto;
+    position: relative;
+    z-index: 1;
 }
 
 .jogo {
-    padding: 100px 35px 120px;
+    width: 1120px;
+    margin: auto;
+    padding: 95px 0 110px;
 }
 
 .titulo {
-    margin-bottom: 45px;
+    margin-bottom: 42px;
 }
 
-.titulo h2 {
-    font-size: 56px;
-    line-height: 1.03;
-    margin-top: 18px;
+.azul {
+    color: #8fd7ff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
 }
 
-/* =========================
-   ÁREA DO JOGO
-========================= */
-
-.jogo-area {
-    padding: 25px;
-    background: #0d1420;
-    border: 1px solid #2b374b;
+.titulo h1 {
+    font-size: 58px;
+    line-height: 1;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+    background: linear-gradient(90deg, #ffffff, #8fd7ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.jogo-topo {
-    display: flex;
-    justify-content: space-between;
-
-    padding-bottom: 18px;
-    border-bottom: 1px solid #2b374b;
+.titulo > p:last-child {
+    width: 650px;
+    color: #9ba8bd;
+    font-size: 17px;
+    line-height: 1.7;
 }
 
-.jogo-topo p {
-    font-family: "Space Mono", monospace;
-    font-size: 14px;
-    color: #dce1ef;
+.jogo-container {
+    padding: 18px;
+    background: rgba(8, 15, 30, .88);
+    border: 1px solid rgba(143, 215, 255, .2);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.5),
+        0 0 70px rgba(50,140,255,.08);
 }
 
-.jogo-topo span {
-    color: #ffcc72;
-    font-size: 18px;
+.hud {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 14px;
 }
 
-/* =========================
-   CAMPO DO JOGO
-========================= */
-
-#campo-jogo {
-    height: 500px;
-    margin-top: 18px;
-
-    background: #050a13;
-    border: 1px solid #202d42;
-
+.hud-item {
+    padding: 18px 20px;
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(143,215,255,.13);
     position: relative;
     overflow: hidden;
-
-    background-image: radial-gradient(
-        #26344b 1px,
-        transparent 1px
-    );
-
-    background-size: 35px 35px;
 }
 
-/* =========================
-   MENSAGEM DO JOGO
-========================= */
-
-#mensagem-jogo {
-    width: 380px;
-    padding: 35px;
-
-    background: #111b2b;
-    border: 1px solid #66748f;
-
-    text-align: center;
-
+.hud-item::after {
+    content: "";
     position: absolute;
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #8fd7ff;
+    opacity: .5;
 }
 
-#mensagem-jogo h3 {
-    font-size: 26px;
+.hud-item span {
+    display: block;
+    color: #68758c;
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 7px;
+}
+
+.hud-item strong {
+    color: #8fd7ff;
+    font-family: monospace;
+    font-size: 23px;
+}
+
+.game-wrapper {
+    height: 580px;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at center, rgba(30,100,180,.15), transparent 45%),
+        #02050d;
+    border: 1px solid rgba(143,215,255,.25);
+    box-shadow: inset 0 0 70px rgba(0,0,0,.7);
+}
+
+#campo-jogo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+}
+
+.game-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(rgba(143,215,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(143,215,255,.025) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+.tela-inicial,
+.tela-final {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        radial-gradient(circle, rgba(8,30,65,.82), rgba(2,5,13,.97));
+}
+
+.tela-final {
+    display: none;
+}
+
+.icone-missao {
+    width: 76px;
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 1px solid #8fd7ff;
+    border-radius: 50%;
+    color: #8fd7ff;
+    font-size: 32px;
+    box-shadow:
+        0 0 20px rgba(143,215,255,.2),
+        inset 0 0 20px rgba(143,215,255,.08);
+}
+
+.mini-titulo {
+    color: #8fd7ff;
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+}
+
+.tela-inicial h2,
+.tela-final h2 {
+    font-size: 38px;
     margin-bottom: 12px;
 }
 
-#mensagem-jogo p {
-    margin-bottom: 24px;
-}
-
-#mensagem-jogo button,
-#reiniciar {
-    padding: 12px 22px;
-
-    border: 0;
-
-    background: #ffcc72;
-    color: #111722;
-
+.tela-inicial > p:not(.mini-titulo) {
+    color: #8d9ab0;
     font-size: 15px;
-    font-weight: 700;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
 
+button {
+    padding: 16px 30px;
+    border: 1px solid #8fd7ff;
+    background: #8fd7ff;
+    color: #04101c;
+    font-family: monospace;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
     cursor: pointer;
-
-    transition: 0.25s;
+    transition: .25s;
 }
 
-#mensagem-jogo button:hover,
-#reiniciar:hover {
-    background: #ffe0a2;
-    transform: translateY(-2px);
+button:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(143,215,255,.3);
 }
 
-/* =========================
-   ASTEROIDES
-========================= */
-
-.asteroide {
-    position: absolute;
-    font-size: 30px;
-    cursor: pointer;
-    user-select: none;
+button:active {
+    transform: translateY(0);
 }
 
-/* =========================
-   FINAL DO JOGO
-========================= */
-
-.jogo-final {
+.resultado {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding-top: 18px;
+    gap: 14px;
+    margin: 25px 0 30px;
 }
 
-.jogo-final p {
-    font-size: 15px;
+.resultado div {
+    min-width: 135px;
+    padding: 18px;
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(143,215,255,.15);
 }
 
-#reiniciar {
-    border: 1px solid #ffcc72;
-    background: transparent;
-    color: #ffcc72;
+.resultado span {
+    display: block;
+    color: #68758c;
+    font-family: monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
 }
 
-/* =========================
-   RODAPÉ
-========================= */
+.resultado strong {
+    color: #8fd7ff;
+    font-family: monospace;
+    font-size: 24px;
+}
+
+.instrucoes {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    padding: 17px;
+    border: 1px solid rgba(143,215,255,.12);
+    border-top: none;
+    background: rgba(255,255,255,.015);
+    color: #718097;
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.instrucoes span {
+    transition: .3s;
+}
+
+.instrucoes span:hover {
+    color: #8fd7ff;
+}
 
 footer {
-    padding: 60px 20px;
-
-    text-align: center;
-
-    background: #04060b;
-    border-top: 1px solid #2c2e29;
+    position: relative;
+    z-index: 1;
+    padding: 55px;
+    background: #03060e;
+    border-top: 1px solid rgba(143,215,255,.12);
 }
 
-footer p {
+footer > p {
     max-width: 500px;
-    margin: 16px auto;
-    font-size: 15px;
+    margin-top: 12px;
+    color: #758197;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
-.rodape {
-    color: #697186;
-    font-size: 12px;
+footer .rodape {
+    margin-top: 35px;
+    color: #8fd7ff;
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+::selection {
+    background: #8fd7ff;
+    color: #04101c;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #03060e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #24577b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8fd7ff;
 }

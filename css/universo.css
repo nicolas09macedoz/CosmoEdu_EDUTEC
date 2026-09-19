@@ -10,9 +10,20 @@ html {
 
 body {
     background: #060913;
-    color: #fff;
+    color: #ffffff;
     font-family: "Space Grotesk", Arial, sans-serif;
     min-width: 1000px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 95px 95px;
+    z-index: -1;
 }
 
 a {
@@ -26,30 +37,22 @@ p {
     line-height: 1.7;
 }
 
-.azul {
-    color: #b2a5ff;
-    font-size: 12px;
-    letter-spacing: 2.5px;
-    font-family: "Space Mono", monospace;
-}
-
-/* =========================
-   HEADER
-========================= */
-
 header {
     height: 82px;
     padding: 0 55px;
-    background: #060913;
-    border-bottom: 1px solid #272442;
-
+    background: rgba(6, 9, 19, 0.96);
+    border-bottom: 1px solid #29234a;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
+    transition: 0.3s;
+}
+
+header.rolando {
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
 }
 
 .logo {
@@ -70,108 +73,142 @@ nav a {
     color: #aab2c7;
     font-size: 14px;
     padding: 10px 0;
+    transition: 0.25s;
 }
 
 nav a:hover,
 nav a.active {
-    color: #fff;
+    color: #ffffff;
 }
 
 nav a.active {
     border-bottom: 2px solid #b2a5ff;
 }
 
-/* =========================
-   CONTEÚDO
-========================= */
-
 main {
     width: 1160px;
     margin: auto;
 }
 
-/* =========================
-   UNIVERSO
-========================= */
-
 .universo {
-    padding: 100px 35px 120px;
+    min-height: calc(100vh - 82px);
+    padding: 95px 35px 110px;
 }
 
 .titulo {
     margin-bottom: 55px;
 }
 
-.titulo h2 {
-    font-size: 56px;
-    line-height: 1.02;
-    margin-top: 18px;
+.azul {
+    color: #b2a5ff;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    font-family: "Space Mono", monospace;
 }
 
-/* =========================
-   CARDS
-========================= */
+.titulo h2 {
+    font-size: 58px;
+    line-height: 1.02;
+    margin-top: 18px;
+    letter-spacing: -2px;
+}
 
 .universo-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 22px;
 }
 
 .card {
     min-height: 235px;
-    padding: 30px;
-
-    background: linear-gradient(
-        145deg,
-        #11152a,
-        #0d1020
-    );
-
-    border: 1px solid #292648;
-
-    transition: 0.25s;
+    padding: 28px;
+    background: linear-gradient(145deg, #11152a, #0a0e1b);
+    border: 1px solid #29234a;
+    border-radius: 18px;
+    transition: 0.3s ease;
+    cursor: pointer;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card:hover {
-    border-color: #8f80dc;
-    transform: translateY(-7px);
+    transform: translateY(-8px);
+    border-color: #b2a5ff;
+    box-shadow: 0 18px 45px rgba(75, 55, 150, 0.2);
+}
+
+.card.selecionado {
+    border-color: #b2a5ff;
+    box-shadow: 0 0 30px rgba(178, 165, 255, 0.18);
 }
 
 .icone {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #3c3565;
+    border-radius: 12px;
     color: #b2a5ff;
-    font-size: 34px;
+    font-size: 24px;
+    margin-bottom: 25px;
 }
 
 .card h3 {
-    font-size: 24px;
-    margin: 22px 0 10px;
+    font-size: 23px;
+    margin-bottom: 10px;
 }
 
 .card p {
     font-size: 15px;
+    line-height: 1.65;
 }
 
-/* =========================
-   RODAPÉ
-========================= */
-
 footer {
-    padding: 60px 20px;
-
-    text-align: center;
-
-    background: #04060b;
-    border-top: 1px solid #272442;
+    border-top: 1px solid #29234a;
+    padding: 45px 55px;
+    background: #050710;
 }
 
 footer p {
     max-width: 500px;
-    margin: 16px auto;
-    font-size: 15px;
+    margin-top: 12px;
 }
 
-.rodape {
-    color: #697186;
+footer .rodape {
+    margin-top: 30px;
     font-size: 12px;
+    color: #656b7e;
+    font-family: "Space Mono", monospace;
+}
+
+.botao-topo {
+    position: fixed;
+    right: 35px;
+    bottom: 30px;
+    width: 45px;
+    height: 45px;
+    border: 1px solid #b2a5ff;
+    border-radius: 50%;
+    background: #0b0f1d;
+    color: #b2a5ff;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: 0.3s;
+    z-index: 200;
+}
+
+.botao-topo.mostrar {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.botao-topo:hover {
+    background: #b2a5ff;
+    color: #060913;
 }

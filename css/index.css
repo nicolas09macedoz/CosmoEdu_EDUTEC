@@ -1,16 +1,27 @@
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:#05070d;color:#fff;font-family:"Space Grotesk",Arial,sans-serif;min-width:1000px}
-a{text-decoration:none;color:inherit}
-p{color:#a8afc2;font-size:16px;line-height:1.7}
-.azul{color:#9da9ff;font-size:12px;letter-spacing:2.5px;font-family:"Space Mono",monospace}
-header{height:82px;padding:0 55px;background:#05070d;border-bottom:1px solid #20283b;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
-.logo{font-size:21px;font-weight:700;letter-spacing:.5px}.logo span{color:#9da9ff}
-nav{display:flex;gap:30px;align-items:center}nav a{color:#a8afc2;font-size:14px;font-weight:500;transition:.25s;padding:10px 0}nav a:hover,nav a.active{color:#fff}nav a.active{border-bottom:2px solid #9da9ff}
-main{width:1160px;margin:auto}.inicio{min-height:650px;padding:100px 35px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #20283b}.inicio-texto{width:55%}.inicio h1{font-size:64px;line-height:1.02;margin:24px 0}.inicio h1 span{color:#9da9ff}.inicio-texto>p:not(.azul){max-width:560px;font-size:18px}.botao{display:inline-block;margin-top:32px;padding:15px 25px;background:#9da9ff;color:#080a10;font-size:15px;font-weight:700;border:1px solid #c3c9ff;transition:.25s}.botao:hover{background:#c3c9ff;transform:translateY(-3px)}.inicio-imagem{width:410px;height:410px;display:flex;align-items:center;justify-content:center}.inicio-imagem img{width:350px;height:350px;object-fit:cover;border-radius:50%;box-shadow:0 0 90px rgba(100,120,255,.2)}
-.page-section{padding:90px 35px;border-bottom:1px solid #20283b}.introducao{display:flex;justify-content:space-between;align-items:center}.introducao>div{width:46%}.introducao h2{font-size:46px;line-height:1.05;margin-top:18px}.introducao .texto{border-left:1px solid #38415c;padding-left:40px}.introducao .texto p+p{margin-top:20px}
-.curiosidades{padding:90px 35px;display:flex;gap:70px}.curiosidades .titulo{width:35%}.titulo h2{font-size:46px;line-height:1.08;margin-top:18px}.lista{width:65%}.curiosidade{display:flex;gap:25px;padding:22px 0;border-bottom:1px solid #20283b}.numero{color:#9da9ff;font-family:"Space Mono",monospace;font-size:13px;min-width:28px}.curiosidade h3{font-size:19px;margin-bottom:8px}.curiosidade p{font-size:15px}
-footer{padding:60px 20px;text-align:center;background:#04060b;border-top:1px solid #20283b}footer p{max-width:500px;margin:16px auto;font-size:15px}.rodape{color:#697186;font-size:12px}
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+    --bg: #03050b;
+    --bg2: #070a14;
+    --card: rgba(13, 17, 31, 0.72);
+
+    --text: #f7f8ff;
+    --muted: #8e97ad;
+
+    --blue: #9da9ff;
+    --blue-light: #c9ceff;
+    --cyan: #83e7ff;
+
+    --line: rgba(157, 169, 255, 0.14);
+    --line-strong: rgba(157, 169, 255, 0.30);
+
+    --glow: rgba(125, 140, 255, 0.20);
+}
+
+/* ============================================================
+   RESET
+============================================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -22,11 +33,93 @@ html {
 }
 
 body {
-    background: #05070d;
-    color: #fff;
-    font-family: "Space Grotesk", Arial, sans-serif;
     min-width: 1000px;
+
+    color: var(--text);
+
+    font-family: "Space Grotesk", Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(115, 130, 255, 0.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 35%,
+            rgba(83, 210, 255, 0.07),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 10% 70%,
+            rgba(120, 100, 255, 0.07),
+            transparent 25%
+        ),
+        var(--bg);
+
+    overflow-x: hidden;
 }
+
+/* ============================================================
+   ATMOSFERA ESPACIAL
+============================================================ */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,0.75) 1px, transparent 1px),
+        radial-gradient(circle, rgba(157,169,255,0.45) 1px, transparent 1px),
+        radial-gradient(circle, rgba(131,231,255,0.30) 1px, transparent 1px);
+
+    background-size:
+        120px 120px,
+        190px 190px,
+        270px 270px;
+
+    background-position:
+        0 0,
+        40px 80px,
+        100px 20px;
+
+    opacity: 0.22;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 700px;
+    height: 700px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(92, 110, 255, 0.035);
+
+    filter: blur(120px);
+
+    border-radius: 50%;
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+/* ============================================================
+   ELEMENTOS GERAIS
+============================================================ */
 
 a {
     text-decoration: none;
@@ -34,162 +127,607 @@ a {
 }
 
 p {
-    color: #a8afc2;
+    color: var(--muted);
+
     font-size: 16px;
-    line-height: 1.7;
+
+    line-height: 1.8;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--text);
+}
+
+::selection {
+    background: var(--blue);
+    color: #02030a;
 }
 
 .azul {
-    color: #9da9ff;
-    font-size: 12px;
-    letter-spacing: 2.5px;
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--blue);
+
     font-family: "Space Mono", monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
 }
+
+.azul::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 8px var(--blue),
+        0 0 20px rgba(157,169,255,0.7);
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
 
 header {
     height: 82px;
+
     padding: 0 55px;
-    background: #05070d;
-    border-bottom: 1px solid #20283b;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     position: sticky;
+
     top: 0;
-    z-index: 10;
+
+    z-index: 999;
+
+    background: rgba(3, 5, 11, 0.70);
+
+    border-bottom: 1px solid var(--line);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
 }
 
+/* linha técnica */
+
+header::before {
+    content: "";
+
+    position: absolute;
+
+    left: 55px;
+    right: 55px;
+
+    bottom: -1px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(157,169,255,0.5),
+            transparent
+        );
+
+    opacity: 0.6;
+}
+
+/* indicador */
+
+header::after {
+    content: "";
+
+    position: absolute;
+
+    left: 55px;
+
+    bottom: -2px;
+
+    width: 80px;
+
+    height: 2px;
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 10px var(--blue),
+        0 0 25px rgba(157,169,255,0.7);
+}
+
+/* ============================================================
+   LOGO
+============================================================ */
+
 .logo {
-    font-size: 21px;
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 23px;
+
     font-weight: 700;
+
     letter-spacing: 0.5px;
+
+    transition: 0.3s;
+}
+
+.logo::before {
+    content: "";
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 8px var(--blue),
+        0 0 20px rgba(157,169,255,0.8);
+
+    animation: pulse 2.5s infinite;
 }
 
 .logo span {
-    color: #9da9ff;
+    color: var(--blue);
+
+    text-shadow:
+        0 0 18px rgba(157,169,255,0.45);
 }
+
+.logo:hover {
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   NAV
+============================================================ */
 
 nav {
     display: flex;
-    gap: 30px;
+
     align-items: center;
+
+    gap: 34px;
 }
 
 nav a {
-    color: #a8afc2;
+    position: relative;
+
+    padding: 12px 0;
+
+    color: #8e97ad;
+
     font-size: 14px;
+
     font-weight: 500;
-    transition: 0.25s;
-    padding: 10px 0;
+
+    transition: 0.3s;
 }
 
-nav a:hover,
-nav a.active {
-    color: #fff;
+nav a::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 2px;
+
+    width: 0;
+
+    height: 2px;
+
+    transform: translateX(-50%);
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 10px var(--blue);
+
+    transition: 0.35s;
+}
+
+nav a:hover {
+    color: white;
+}
+
+nav a:hover::before {
+    width: 100%;
 }
 
 nav a.active {
-    border-bottom: 2px solid #9da9ff;
+    color: white;
 }
+
+nav a.active::before {
+    width: 100%;
+}
+
+/* ============================================================
+   MAIN
+============================================================ */
 
 main {
     width: 1160px;
+
     margin: auto;
 }
 
-/* =========================
-   PÁGINA INICIAL
-========================= */
+/* ============================================================
+   HERO
+============================================================ */
 
 .inicio {
-    min-height: 650px;
-    padding: 100px 35px;
+    min-height: 750px;
+
+    padding: 90px 35px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    border-bottom: 1px solid #20283b;
+    position: relative;
+
+    border-bottom: 1px solid var(--line);
+
+    overflow: hidden;
 }
 
+/* grid */
+
+.inicio::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(157,169,255,0.055) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(157,169,255,0.055) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 85%
+        );
+
+    opacity: 0.55;
+
+    pointer-events: none;
+}
+
+/* luz */
+
+.inicio::after {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    left: -200px;
+    top: 80px;
+
+    border-radius: 50%;
+
+    background: rgba(90,110,255,0.10);
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+/* ============================================================
+   HERO TEXTO
+============================================================ */
+
 .inicio-texto {
-    width: 55%;
+    width: 56%;
+
+    position: relative;
+
+    z-index: 2;
 }
 
 .inicio h1 {
-    font-size: 64px;
-    line-height: 1.02;
-    margin: 24px 0;
+    margin: 25px 0;
+
+    max-width: 700px;
+
+    font-size: 74px;
+
+    line-height: 0.94;
+
+    letter-spacing: -4px;
 }
 
 .inicio h1 span {
-    color: #9da9ff;
+    color: var(--blue);
+
+    text-shadow:
+        0 0 25px rgba(157,169,255,0.30),
+        0 0 60px rgba(157,169,255,0.10);
 }
 
 .inicio-texto > p:not(.azul) {
-    max-width: 560px;
+    max-width: 570px;
+
+    color: #9ba4ba;
+
     font-size: 18px;
 }
 
+/* ============================================================
+   BOTÃO
+============================================================ */
+
 .botao {
-    display: inline-block;
-    margin-top: 32px;
-    padding: 15px 25px;
+    display: inline-flex;
 
-    background: #9da9ff;
-    color: #080a10;
+    align-items: center;
 
-    font-size: 15px;
+    gap: 15px;
+
+    margin-top: 38px;
+
+    padding: 16px 27px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    color: #05060c;
+
+    background: var(--blue);
+
+    border: 1px solid #d7daff;
+
+    font-size: 14px;
+
     font-weight: 700;
 
-    border: 1px solid #c3c9ff;
+    box-shadow:
+        0 0 25px rgba(157,169,255,0.13);
 
-    transition: 0.25s;
+    transition: 0.35s;
+}
+
+.botao::after {
+    content: "→";
+
+    font-size: 18px;
+
+    transition: 0.3s;
 }
 
 .botao:hover {
-    background: #c3c9ff;
-    transform: translateY(-3px);
+    color: #05060c;
+
+    background: #ffffff;
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 45px rgba(157,169,255,0.18),
+        0 0 40px rgba(157,169,255,0.12);
 }
+
+.botao:hover::after {
+    transform: translateX(6px);
+}
+
+/* ============================================================
+   HERO IMAGEM
+============================================================ */
 
 .inicio-imagem {
-    width: 410px;
-    height: 410px;
+    width: 440px;
+    height: 440px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
+
+    position: relative;
+
+    z-index: 2;
 }
+
+/* anel externo */
+
+.inicio-imagem::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(157,169,255,0.24);
+
+    box-shadow:
+        0 0 50px rgba(100,120,255,0.08),
+        inset 0 0 50px rgba(100,120,255,0.04);
+
+    animation: rotate 14s linear infinite;
+}
+
+/* círculo de energia */
+
+.inicio-imagem::after {
+    content: "";
+
+    position: absolute;
+
+    width: 330px;
+    height: 330px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(100,120,255,0.16),
+            transparent 65%
+        );
+
+    filter: blur(20px);
+
+    animation: breathe 5s ease-in-out infinite;
+}
+
+/* imagem */
 
 .inicio-imagem img {
     width: 350px;
     height: 350px;
 
     object-fit: cover;
+
     border-radius: 50%;
 
-    box-shadow: 0 0 90px rgba(100, 120, 255, 0.2);
+    position: relative;
+
+    z-index: 5;
+
+    border: 1px solid rgba(255,255,255,0.20);
+
+    box-shadow:
+        0 0 40px rgba(100,120,255,0.22),
+        0 0 100px rgba(100,120,255,0.10);
+
+    animation: float 5s ease-in-out infinite;
+
+    transition: 0.5s;
 }
 
-/* =========================
+.inicio-imagem img:hover {
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 70px rgba(100,120,255,0.35),
+        0 0 130px rgba(100,120,255,0.14);
+}
+
+/* ============================================================
+   DECORAÇÕES DA HERO
+============================================================ */
+
+.inicio-imagem .orbita {
+    position: absolute;
+
+    width: 470px;
+    height: 470px;
+
+    border-radius: 50%;
+
+    border: 1px dashed rgba(157,169,255,0.12);
+
+    animation: rotateReverse 20s linear infinite;
+}
+
+/* ============================================================
    SEÇÕES
-========================= */
+============================================================ */
 
 .page-section {
-    padding: 90px 35px;
-    border-bottom: 1px solid #20283b;
+    padding: 115px 35px;
+
+    position: relative;
+
+    border-bottom: 1px solid var(--line);
 }
 
-/* =========================
+.page-section::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 35px;
+
+    width: 90px;
+    height: 1px;
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 15px rgba(157,169,255,0.5);
+}
+
+/* número decorativo */
+
+.page-section::after {
+    content: "COSMOS / 01";
+
+    position: absolute;
+
+    right: 35px;
+    top: 32px;
+
+    color: rgba(157,169,255,0.28);
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+/* ============================================================
    INTRODUÇÃO
-========================= */
+============================================================ */
 
 .introducao {
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
+
+    justify-content: space-between;
+
+    gap: 90px;
 }
 
 .introducao > div {
@@ -197,29 +735,65 @@ main {
 }
 
 .introducao h2 {
-    font-size: 46px;
-    line-height: 1.05;
-    margin-top: 18px;
+    margin-top: 20px;
+
+    font-size: 53px;
+
+    line-height: 0.96;
+
+    letter-spacing: -2.5px;
 }
 
 .introducao .texto {
-    border-left: 1px solid #38415c;
-    padding-left: 40px;
+    padding: 32px 0 32px 42px;
+
+    position: relative;
+
+    border-left: 1px solid var(--line-strong);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(157,169,255,0.025),
+            transparent
+        );
+}
+
+.introducao .texto::before {
+    content: "";
+
+    position: absolute;
+
+    left: -1px;
+
+    top: 0;
+
+    width: 2px;
+
+    height: 80px;
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 15px var(--blue);
 }
 
 .introducao .texto p + p {
-    margin-top: 20px;
+    margin-top: 22px;
 }
 
-/* =========================
+/* ============================================================
    CURIOSIDADES
-========================= */
+============================================================ */
 
 .curiosidades {
-    padding: 90px 35px;
+    padding: 115px 35px;
 
     display: flex;
-    gap: 70px;
+
+    gap: 80px;
+
+    position: relative;
 }
 
 .curiosidades .titulo {
@@ -227,60 +801,298 @@ main {
 }
 
 .titulo h2 {
-    font-size: 46px;
-    line-height: 1.08;
-    margin-top: 18px;
+    margin-top: 20px;
+
+    font-size: 53px;
+
+    line-height: 0.96;
+
+    letter-spacing: -2.5px;
 }
 
 .lista {
     width: 65%;
 }
 
+/* ============================================================
+   CARDS
+============================================================ */
+
 .curiosidade {
     display: flex;
+
     gap: 25px;
 
-    padding: 22px 0;
+    padding: 27px 25px;
 
-    border-bottom: 1px solid #20283b;
+    position: relative;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,0.025),
+            transparent 70%
+        );
+
+    border: 1px solid transparent;
+
+    border-bottom-color: var(--line);
+
+    transition: 0.4s;
+
+    overflow: hidden;
+}
+
+.curiosidade::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 0;
+    height: 100%;
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 20px rgba(157,169,255,0.8);
+
+    transition: 0.4s;
+}
+
+.curiosidade::after {
+    content: "↗";
+
+    position: absolute;
+
+    right: 22px;
+    top: 20px;
+
+    color: rgba(157,169,255,0.25);
+
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+.curiosidade:hover {
+    background:
+        linear-gradient(
+            120deg,
+            rgba(157,169,255,0.09),
+            rgba(157,169,255,0.015)
+        );
+
+    border-color: rgba(157,169,255,0.15);
+
+    transform: translateX(8px);
+
+    box-shadow:
+        -20px 0 50px rgba(90,110,255,0.04);
+}
+
+.curiosidade:hover::before {
+    width: 2px;
+}
+
+.curiosidade:hover::after {
+    color: var(--blue);
+
+    transform: translate(3px, -3px);
 }
 
 .numero {
-    color: #9da9ff;
+    min-width: 30px;
+
+    padding-top: 3px;
+
+    color: var(--blue);
+
     font-family: "Space Mono", monospace;
-    font-size: 13px;
-    min-width: 28px;
+
+    font-size: 12px;
+
+    text-shadow:
+        0 0 10px rgba(157,169,255,0.4);
 }
 
 .curiosidade h3 {
-    font-size: 19px;
     margin-bottom: 8px;
+
+    font-size: 19px;
+
+    transition: 0.3s;
+}
+
+.curiosidade:hover h3 {
+    color: var(--blue-light);
 }
 
 .curiosidade p {
     font-size: 15px;
 }
 
-/* =========================
-   RODAPÉ
-========================= */
+/* ============================================================
+   FOOTER
+============================================================ */
 
 footer {
-    padding: 60px 20px;
+    padding: 90px 20px;
+
+    position: relative;
 
     text-align: center;
 
-    background: #04060b;
-    border-top: 1px solid #20283b;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(100,120,255,0.09),
+            transparent 45%
+        ),
+        #02040a;
+
+    border-top: 1px solid var(--line);
+}
+
+footer::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: -1px;
+
+    width: 140px;
+    height: 2px;
+
+    transform: translateX(-50%);
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 15px var(--blue),
+        0 0 35px rgba(157,169,255,0.5);
 }
 
 footer p {
-    max-width: 500px;
-    margin: 16px auto;
+    max-width: 520px;
+
+    margin: 18px auto;
+
     font-size: 15px;
 }
 
 .rodape {
-    color: #697186;
-    font-size: 12px;
+    color: #626b80;
+
+    font-family: "Space Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
 }
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #02040a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #242b46;
+
+    border-radius: 20px;
+
+    border: 2px solid #02040a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--blue);
+}
+
+/* ============================================================
+   ANIMAÇÕES
+============================================================ */
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        box-shadow:
+            0 0 8px var(--blue),
+            0 0 20px rgba(157,169,255,0.8);
+    }
+
+    50% {
+        opacity: 0.5;
+        box-shadow:
+            0 0 15px var(--blue),
+            0 0 35px rgba(157,169,255,0.5);
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow:
+            0 0 8px var(--blue),
+            0 0 20px rgba(157,169,255,0.8);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateReverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes breathe {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.95);
+        opacity: 0.6;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
