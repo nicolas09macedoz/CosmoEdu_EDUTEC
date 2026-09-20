@@ -1,3 +1,8 @@
+css
+/* ================================
+   RESET
+================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,65 +16,139 @@ html {
 body {
     min-width: 1000px;
     background:
-        radial-gradient(circle at 50% 15%, rgba(60, 150, 255, 0.16), transparent 35%),
-        radial-gradient(circle at 10% 80%, rgba(80, 110, 255, 0.10), transparent 30%),
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(60, 150, 255, 0.16),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(80, 110, 255, 0.10),
+            transparent 30%
+        ),
         #050914;
     color: #ffffff;
     font-family: Arial, sans-serif;
 }
+
+/* ================================
+   EFEITO DE ESTRELAS
+================================ */
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
+
     background-image:
-        radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
-        radial-gradient(circle, rgba(143,215,255,.6) 1px, transparent 1px);
-    background-size: 120px 120px, 200px 200px;
-    background-position: 20px 30px, 80px 100px;
-    opacity: .25;
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.8) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle,
+            rgba(143, 215, 255, 0.6) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        120px 120px,
+        200px 200px;
+
+    background-position:
+        20px 30px,
+        80px 100px;
+
+    opacity: 0.25;
+    z-index: 0;
 }
+
+/* ================================
+   LINKS
+================================ */
 
 a {
     text-decoration: none;
     color: inherit;
 }
 
+/* ================================
+   NAVBAR
+================================ */
+
 header {
+    width: 100%;
     height: 82px;
     padding: 0 55px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(5, 9, 20, .82);
-    border-bottom: 1px solid rgba(143, 215, 255, .15);
+
+    background: rgba(5, 9, 20, 0.88);
+    border-bottom: 1px solid rgba(143, 215, 255, 0.15);
+
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 }
+
+/* Logo */
 
 .logo {
     color: #ffffff;
     font-size: 23px;
     font-weight: bold;
     letter-spacing: 2px;
+    white-space: nowrap;
 }
 
 .logo span {
     color: #8fd7ff;
 }
 
+/* Menu */
+
 nav {
     display: flex;
+    align-items: center;
     gap: 27px;
 }
 
 nav a {
+    position: relative;
+
     color: #78869e;
     font-size: 14px;
-    transition: .3s;
+    font-weight: 500;
+
+    padding: 8px 0;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* Linha embaixo do link */
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: #8fd7ff;
+
+    transition: width 0.3s ease;
 }
 
 nav a:hover,
@@ -77,280 +156,459 @@ nav a.active {
     color: #8fd7ff;
 }
 
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+/* ================================
+   MAIN
+================================ */
+
 main {
     position: relative;
     z-index: 1;
 }
 
+/* ================================
+   ÁREA DO JOGO
+================================ */
+
 .jogo {
     width: 1120px;
-    margin: auto;
+    margin: 0 auto;
     padding: 95px 0 110px;
 }
+
+/* ================================
+   TÍTULO
+================================ */
 
 .titulo {
     margin-bottom: 42px;
 }
 
 .azul {
+    margin-bottom: 16px;
+
     color: #8fd7ff;
+
     font-size: 12px;
     font-weight: bold;
+
     letter-spacing: 3px;
-    margin-bottom: 16px;
 }
 
 .titulo h1 {
+    margin-bottom: 20px;
+
     font-size: 58px;
     line-height: 1;
-    margin-bottom: 20px;
     letter-spacing: -2px;
-    background: linear-gradient(90deg, #ffffff, #8fd7ff);
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #8fd7ff
+    );
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .titulo > p:last-child {
     width: 650px;
+
     color: #9ba8bd;
+
     font-size: 17px;
     line-height: 1.7;
 }
 
+/* ================================
+   CONTAINER DO JOGO
+================================ */
+
 .jogo-container {
     padding: 18px;
-    background: rgba(8, 15, 30, .88);
-    border: 1px solid rgba(143, 215, 255, .2);
+
+    background: rgba(8, 15, 30, 0.88);
+
+    border: 1px solid rgba(143, 215, 255, 0.20);
+
     box-shadow:
-        0 30px 80px rgba(0,0,0,.5),
-        0 0 70px rgba(50,140,255,.08);
+        0 30px 80px rgba(0, 0, 0, 0.5),
+        0 0 70px rgba(50, 140, 255, 0.08);
 }
+
+/* ================================
+   HUD
+================================ */
 
 .hud {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+
     gap: 12px;
+
     margin-bottom: 14px;
 }
 
 .hud-item {
-    padding: 18px 20px;
-    background: rgba(255,255,255,.025);
-    border: 1px solid rgba(143,215,255,.13);
     position: relative;
+
+    padding: 18px 20px;
+
     overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid rgba(143, 215, 255, 0.13);
 }
 
 .hud-item::after {
     content: "";
+
     position: absolute;
     left: 0;
     bottom: 0;
+
     width: 100%;
     height: 2px;
+
     background: #8fd7ff;
-    opacity: .5;
+
+    opacity: 0.5;
 }
 
 .hud-item span {
     display: block;
+
+    margin-bottom: 7px;
+
     color: #68758c;
+
     font-family: monospace;
     font-size: 10px;
+
     letter-spacing: 2px;
-    margin-bottom: 7px;
 }
 
 .hud-item strong {
     color: #8fd7ff;
+
     font-family: monospace;
     font-size: 23px;
 }
 
+/* ================================
+   CAMPO DO JOGO
+================================ */
+
 .game-wrapper {
-    height: 580px;
     position: relative;
+
+    height: 580px;
+
     overflow: hidden;
+
     background:
-        radial-gradient(circle at center, rgba(30,100,180,.15), transparent 45%),
+        radial-gradient(
+            circle at center,
+            rgba(30, 100, 180, 0.15),
+            transparent 45%
+        ),
         #02050d;
-    border: 1px solid rgba(143,215,255,.25);
-    box-shadow: inset 0 0 70px rgba(0,0,0,.7);
+
+    border: 1px solid rgba(143, 215, 255, 0.25);
+
+    box-shadow:
+        inset 0 0 70px rgba(0, 0, 0, 0.7);
 }
 
 #campo-jogo {
     display: block;
+
     width: 100%;
     height: 100%;
+
     cursor: crosshair;
 }
 
+/* Grade futurista */
+
 .game-wrapper::before {
     content: "";
+
     position: absolute;
     inset: 0;
+
     pointer-events: none;
+
     background:
-        linear-gradient(rgba(143,215,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(143,215,255,.025) 1px, transparent 1px);
+        linear-gradient(
+            rgba(143, 215, 255, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(143, 215, 255, 0.025) 1px,
+            transparent 1px
+        );
+
     background-size: 50px 50px;
 }
+
+/* ================================
+   TELA INICIAL / FINAL
+================================ */
 
 .tela-inicial,
 .tela-final {
     position: absolute;
     inset: 0;
+
     display: flex;
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
+
     text-align: center;
+
     background:
-        radial-gradient(circle, rgba(8,30,65,.82), rgba(2,5,13,.97));
+        radial-gradient(
+            circle,
+            rgba(8, 30, 65, 0.82),
+            rgba(2, 5, 13, 0.97)
+        );
 }
 
 .tela-final {
     display: none;
 }
 
+/* ================================
+   ÍCONE DA MISSÃO
+================================ */
+
 .icone-missao {
     width: 76px;
     height: 76px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     margin-bottom: 20px;
+
     border: 1px solid #8fd7ff;
     border-radius: 50%;
+
     color: #8fd7ff;
+
     font-size: 32px;
+
     box-shadow:
-        0 0 20px rgba(143,215,255,.2),
-        inset 0 0 20px rgba(143,215,255,.08);
+        0 0 20px rgba(143, 215, 255, 0.2),
+        inset 0 0 20px rgba(143, 215, 255, 0.08);
 }
 
+/* ================================
+   TEXTOS DA TELA
+================================ */
+
 .mini-titulo {
+    margin-bottom: 14px;
+
     color: #8fd7ff;
+
     font-family: monospace;
     font-size: 11px;
+
     letter-spacing: 3px;
-    margin-bottom: 14px;
 }
 
 .tela-inicial h2,
 .tela-final h2 {
-    font-size: 38px;
     margin-bottom: 12px;
+
+    font-size: 38px;
 }
 
 .tela-inicial > p:not(.mini-titulo) {
+    margin-bottom: 28px;
+
     color: #8d9ab0;
+
     font-size: 15px;
     line-height: 1.7;
-    margin-bottom: 28px;
 }
+
+/* ================================
+   BOTÕES
+================================ */
 
 button {
     padding: 16px 30px;
+
     border: 1px solid #8fd7ff;
+
     background: #8fd7ff;
     color: #04101c;
+
     font-family: monospace;
     font-size: 12px;
     font-weight: bold;
+
     letter-spacing: 1px;
+
     cursor: pointer;
-    transition: .25s;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 button:hover {
     background: #ffffff;
+
     transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(143,215,255,.3);
+
+    box-shadow:
+        0 0 30px rgba(143, 215, 255, 0.3);
 }
 
 button:active {
     transform: translateY(0);
 }
 
+/* ================================
+   RESULTADO
+================================ */
+
 .resultado {
     display: flex;
+
     gap: 14px;
+
     margin: 25px 0 30px;
 }
 
 .resultado div {
     min-width: 135px;
+
     padding: 18px;
-    background: rgba(255,255,255,.025);
-    border: 1px solid rgba(143,215,255,.15);
+
+    background: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid rgba(143, 215, 255, 0.15);
 }
 
 .resultado span {
     display: block;
+
+    margin-bottom: 8px;
+
     color: #68758c;
+
     font-family: monospace;
     font-size: 9px;
+
     letter-spacing: 1px;
-    margin-bottom: 8px;
 }
 
 .resultado strong {
     color: #8fd7ff;
+
     font-family: monospace;
     font-size: 24px;
 }
 
+/* ================================
+   INSTRUÇÕES
+================================ */
+
 .instrucoes {
     display: flex;
+
     justify-content: center;
+
     gap: 45px;
+
     padding: 17px;
-    border: 1px solid rgba(143,215,255,.12);
+
+    background: rgba(255, 255, 255, 0.015);
+
+    border: 1px solid rgba(143, 215, 255, 0.12);
     border-top: none;
-    background: rgba(255,255,255,.015);
+
     color: #718097;
+
     font-family: monospace;
     font-size: 10px;
+
     letter-spacing: 1px;
 }
 
 .instrucoes span {
-    transition: .3s;
+    transition: color 0.3s ease;
 }
 
 .instrucoes span:hover {
     color: #8fd7ff;
 }
 
+/* ================================
+   FOOTER
+================================ */
+
 footer {
     position: relative;
     z-index: 1;
+
     padding: 55px;
+
     background: #03060e;
-    border-top: 1px solid rgba(143,215,255,.12);
+
+    border-top: 1px solid rgba(143, 215, 255, 0.12);
 }
 
 footer > p {
     max-width: 500px;
+
     margin-top: 12px;
+
     color: #758197;
+
     font-size: 14px;
     line-height: 1.6;
 }
 
 footer .rodape {
     margin-top: 35px;
+
     color: #8fd7ff;
+
     font-family: monospace;
     font-size: 10px;
+
     letter-spacing: 2px;
 }
+
+/* ================================
+   SELEÇÃO DE TEXTO
+================================ */
 
 ::selection {
     background: #8fd7ff;
     color: #04101c;
 }
+
+/* ================================
+   SCROLLBAR
+================================ */
 
 ::-webkit-scrollbar {
     width: 8px;
@@ -367,3 +625,4 @@ footer .rodape {
 ::-webkit-scrollbar-thumb:hover {
     background: #8fd7ff;
 }
+
