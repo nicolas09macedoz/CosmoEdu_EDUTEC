@@ -7,6 +7,43 @@
         const caminhoAtual = window.location.pathname.split("/").pop() || "index.html";
         let atualizandoBarra = false;
 
+        const header = document.querySelector("header");
+        const navegacao = header ? header.querySelector("nav") : null;
+
+        if (header && navegacao) {
+            const menu = document.createElement("button");
+            menu.className = "menu-toggle";
+            menu.type = "button";
+            menu.setAttribute("aria-label", "Abrir menu");
+            menu.setAttribute("aria-expanded", "false");
+            menu.setAttribute("aria-controls", "navegacao-principal");
+            menu.innerHTML = '<span class="menu-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span><span class="menu-toggle-label">Menu</span>';
+            navegacao.id = "navegacao-principal";
+            header.insertBefore(menu, navegacao);
+
+            function fecharMenu() {
+                header.classList.remove("menu-aberto");
+                menu.setAttribute("aria-expanded", "false");
+                menu.setAttribute("aria-label", "Abrir menu");
+            }
+
+            menu.addEventListener("click", function () {
+                const aberto = header.classList.toggle("menu-aberto");
+                menu.setAttribute("aria-expanded", String(aberto));
+                menu.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
+            });
+
+            navegacao.querySelectorAll("a").forEach(function (link) {
+                link.addEventListener("click", fecharMenu);
+            });
+
+            document.addEventListener("keydown", function (evento) {
+                if (evento.key === "Escape") {
+                    fecharMenu();
+                }
+            });
+        }
+
         barra.setAttribute("aria-hidden", "true");
         barra.style.cssText = [
             "position: fixed",
@@ -49,6 +86,61 @@
 
         if (reduzMovimento) {
             return;
+        }
+
+        document.body.classList.add("animacoes-ativas");
+
+        const superficiesInterativas = document.querySelectorAll(
+            ".planeta, .card, .noticia, .filme, .curiosidade, .conquistas > div"
+        );
+
+        superficiesInterativas.forEach(function (superficie) {
+            const brilho = document.createElement("span");
+            brilho.className = "brilho-superficie";
+            brilho.setAttribute("aria-hidden", "true");
+            superficie.classList.add("efeito-luz");
+            superficie.appendChild(brilho);
+
+            superficie.addEventListener("pointermove", function (evento) {
+                const area = superficie.getBoundingClientRect();
+                superficie.style.setProperty("--luz-x", `${evento.clientX - area.left}px`);
+                superficie.style.setProperty("--luz-y", `${evento.clientY - area.top}px`);
+            });
+
+            superficie.addEventListener("pointerenter", function () {
+                superficie.classList.add("luz-ativa");
+            });
+
+            superficie.addEventListener("pointerleave", function () {
+                superficie.classList.remove("luz-ativa");
+            });
+        });
+
+        const elementosAnimados = document.querySelectorAll(
+            "main > section, .planeta, .card, .noticia, .filme, .conquistas > div"
+        );
+
+        if ("IntersectionObserver" in window) {
+            const observadorAnimacoes = new IntersectionObserver(function (entradas, observador) {
+                entradas.forEach(function (entrada) {
+                    if (!entrada.isIntersecting) {
+                        return;
+                    }
+
+                    entrada.target.classList.add("revelado");
+                    observador.unobserve(entrada.target);
+                });
+            }, { threshold: 0.12, rootMargin: "0px 0px -8%" });
+
+            elementosAnimados.forEach(function (elemento, indice) {
+                elemento.classList.add("revelar-item");
+                elemento.style.setProperty("--atraso-reveal", `${Math.min(indice % 6, 5) * 70}ms`);
+                observadorAnimacoes.observe(elemento);
+            });
+        } else {
+            elementosAnimados.forEach(function (elemento) {
+                elemento.classList.add("revelado");
+            });
         }
 
         document.querySelectorAll("button, .botao, .ver").forEach(function (controle) {

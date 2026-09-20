@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const comboElemento = document.getElementById("combo");
     const tempoElemento = document.getElementById("tempo");
     const vidasElemento = document.getElementById("vidas");
+    const gameWrapper = document.querySelector(".game-wrapper");
+    const feedbackJogo = document.getElementById("feedback-jogo");
 
     const pontuacaoFinal = document.getElementById("pontuacao-final");
     const asteroidesFinal = document.getElementById("asteroides-final");
@@ -50,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let asteroides = [];
     let estrelas = [];
+    let particulas = [];
 
     let pontos = 0;
     let combo = 1;
@@ -186,6 +189,70 @@ document.addEventListener("DOMContentLoaded", function () {
             variacao:
                 Math.random() * 1000
         });
+    }
+
+    function criarExplosao(x, y, cor) {
+        for (let i = 0; i < 16; i++) {
+            const angulo = Math.random() * Math.PI * 2;
+            const velocidade = Math.random() * 3 + 1;
+
+            particulas.push({
+                x: x,
+                y: y,
+                vx: Math.cos(angulo) * velocidade,
+                vy: Math.sin(angulo) * velocidade,
+                tamanho: Math.random() * 2.5 + 1,
+                vida: 1,
+                cor: cor
+            });
+        }
+    }
+
+    function atualizarParticulas(delta) {
+        const fator = delta / 16.67;
+
+        particulas = particulas.filter(function (particula) {
+            particula.x += particula.vx * fator;
+            particula.y += particula.vy * fator;
+            particula.vy += 0.035 * fator;
+            particula.vida -= 0.035 * fator;
+            return particula.vida > 0;
+        });
+    }
+
+    function desenharParticulas() {
+        particulas.forEach(function (particula) {
+            contexto.save();
+            contexto.globalAlpha = particula.vida;
+            contexto.fillStyle = particula.cor;
+            contexto.shadowColor = particula.cor;
+            contexto.shadowBlur = 10;
+            contexto.beginPath();
+            contexto.arc(particula.x, particula.y, particula.tamanho, 0, Math.PI * 2);
+            contexto.fill();
+            contexto.restore();
+        });
+    }
+
+    function mostrarFeedback(texto) {
+        if (!feedbackJogo) {
+            return;
+        }
+
+        feedbackJogo.textContent = texto;
+        feedbackJogo.classList.remove("ativo");
+        void feedbackJogo.offsetWidth;
+        feedbackJogo.classList.add("ativo");
+    }
+
+    function destacarImpacto() {
+        if (!gameWrapper) {
+            return;
+        }
+
+        gameWrapper.classList.remove("impacto");
+        void gameWrapper.offsetWidth;
+        gameWrapper.classList.add("impacto");
     }
 
 
@@ -333,6 +400,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
+        desenharParticulas();
+
         desenharNave();
     }
 
@@ -347,6 +416,8 @@ function atualizar(delta) {
     if (!jogoAtivo) {
         return;
     }
+
+    atualizarParticulas(delta);
 
 
     /* ============================
@@ -407,6 +478,8 @@ function atualizar(delta) {
              */
 
             asteroides.splice(i, 1);
+
+            criarExplosao(asteroide.x, asteroide.y, "#ff6b8a");
 
 
             /* PERDE UMA VIDA */
@@ -807,6 +880,9 @@ function atualizar(delta) {
 
                 asteroides.splice(i, 1);
 
+                criarExplosao(asteroide.x, asteroide.y, "#8fd7ff");
+                destacarImpacto();
+
 
                 /* ========================
                    PONTUAÇÃO
@@ -846,6 +922,7 @@ function atualizar(delta) {
 
 
                 atualizarHUD();
+                mostrarFeedback(combo > 2 ? "COMBO x" + combo : "+" + pontosGanhos);
 
                 return;
             }

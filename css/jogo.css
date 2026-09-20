@@ -337,6 +337,30 @@ main {
         inset 0 0 70px rgba(0, 0, 0, 0.7);
 }
 
+.game-wrapper.impacto {
+    animation: impacto 0.25s ease;
+}
+
+.feedback-jogo {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    z-index: 4;
+    color: #ffffff;
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    opacity: 0;
+    pointer-events: none;
+    text-shadow: 0 0 15px #8fd7ff;
+    transform: translate(-50%, 12px) scale(0.8);
+}
+
+.feedback-jogo.ativo {
+    animation: feedbackAcerto 0.65s ease both;
+}
+
 #campo-jogo {
     display: block;
 
@@ -635,5 +659,36 @@ footer .rodape {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #8fd7ff;
+}
+
+@keyframes impacto {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    35% {
+        transform: translateX(-3px);
+    }
+
+    70% {
+        transform: translateX(3px);
+    }
+}
+
+@keyframes feedbackAcerto {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 12px) scale(0.8);
+    }
+
+    25% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1.05);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -32px) scale(1);
+    }
 }
 

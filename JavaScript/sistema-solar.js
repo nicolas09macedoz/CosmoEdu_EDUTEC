@@ -9,15 +9,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const tipo = document.getElementById("modal-tipo");
     const diametro = document.getElementById("modal-diametro");
     const ano = document.getElementById("modal-ano");
+    const luas = document.getElementById("modal-luas");
+    const temperatura = document.getElementById("modal-temperatura");
+    const curiosidade = document.getElementById("modal-curiosidade");
     const dados = {
-        mercurio: { tipo: "Planeta rochoso", diametro: "4.879 km", ano: "88 dias", descricao: "O menor planeta e o mais proximo do Sol.", imagem: "img/mercurio.jpg" },
-        venus: { tipo: "Planeta rochoso", diametro: "12.104 km", ano: "225 dias", descricao: "Um mundo coberto por nuvens densas e temperaturas extremas.", imagem: "img/venus.jpg" },
-        terra: { tipo: "Planeta rochoso", diametro: "12.742 km", ano: "365 dias", descricao: "O unico planeta conhecido que abriga vida.", imagem: "img/terra.jpg" },
-        marte: { tipo: "Planeta rochoso", diametro: "6.779 km", ano: "687 dias", descricao: "O planeta vermelho guarda sinais de um passado mais umido.", imagem: "img/marte.jpg" },
-        jupiter: { tipo: "Gigante gasoso", diametro: "139.820 km", ano: "11,86 anos", descricao: "O maior planeta do Sistema Solar, marcado pela Grande Mancha Vermelha.", imagem: "img/jupiter.jpg" },
-        saturno: { tipo: "Gigante gasoso", diametro: "116.460 km", ano: "29,45 anos", descricao: "Um gigante reconhecido pelo seu impressionante sistema de aneis.", imagem: "img/saturno.jpg" },
-        urano: { tipo: "Gigante de gelo", diametro: "50.724 km", ano: "84 anos", descricao: "Um planeta inclinado que gira praticamente de lado.", imagem: "img/urano.jpg" },
-        netuno: { tipo: "Gigante de gelo", diametro: "49.244 km", ano: "164,8 anos", descricao: "O mundo mais distante do Sol e um dos mais ventosos.", imagem: "img/netuno.jpg" }
+        mercurio: { tipo: "Planeta rochoso", diametro: "4.879 km", ano: "88 dias", luas: "0", temperatura: "167 °C", descricao: "O menor planeta e o mais proximo do Sol.", curiosidade: "Um dia solar em Mercurio dura 176 dias terrestres.", imagem: "img/mercurio.jpg" },
+        venus: { tipo: "Planeta rochoso", diametro: "12.104 km", ano: "225 dias", luas: "0", temperatura: "464 °C", descricao: "Um mundo coberto por nuvens densas e temperaturas extremas.", curiosidade: "Venus gira no sentido contrario ao da maioria dos planetas.", imagem: "img/venus.jpg" },
+        terra: { tipo: "Planeta rochoso", diametro: "12.742 km", ano: "365 dias", luas: "1", temperatura: "15 °C", descricao: "O unico planeta conhecido que abriga vida.", curiosidade: "Cerca de 71% da superficie da Terra e coberta por agua.", imagem: "img/terra.jpg" },
+        marte: { tipo: "Planeta rochoso", diametro: "6.779 km", ano: "687 dias", luas: "2", temperatura: "-63 °C", descricao: "O planeta vermelho guarda sinais de um passado mais umido.", curiosidade: "Marte abriga o Olympus Mons, o maior vulcao conhecido do Sistema Solar.", imagem: "img/marte.jpg" },
+        jupiter: { tipo: "Gigante gasoso", diametro: "139.820 km", ano: "11,86 anos", luas: "95", temperatura: "-110 °C", descricao: "O maior planeta do Sistema Solar, marcado pela Grande Mancha Vermelha.", curiosidade: "Jupiter e tao grande que caberiam mais de mil Terras dentro dele.", imagem: "img/jupiter.jpg" },
+        saturno: { tipo: "Gigante gasoso", diametro: "116.460 km", ano: "29,45 anos", luas: "146", temperatura: "-140 °C", descricao: "Um gigante reconhecido pelo seu impressionante sistema de aneis.", curiosidade: "Saturno e menos denso que a agua e flutuaria em um oceano grande o bastante.", imagem: "img/saturno.jpg" },
+        urano: { tipo: "Gigante de gelo", diametro: "50.724 km", ano: "84 anos", luas: "28", temperatura: "-195 °C", descricao: "Um planeta inclinado que gira praticamente de lado.", curiosidade: "A inclinacao de Urano faz suas estacoes durarem cerca de 21 anos.", imagem: "img/urano.jpg" },
+        netuno: { tipo: "Gigante de gelo", diametro: "49.244 km", ano: "164,8 anos", luas: "16", temperatura: "-200 °C", descricao: "O mundo mais distante do Sol e um dos mais ventosos.", curiosidade: "Os ventos de Netuno podem ultrapassar 2.000 km/h.", imagem: "img/netuno.jpg" }
     };
 
     if (!modal || !fechar) {
@@ -43,6 +46,9 @@ document.addEventListener("DOMContentLoaded", function () {
         tipo.textContent = planeta.tipo;
         diametro.textContent = planeta.diametro;
         ano.textContent = planeta.ano;
+        luas.textContent = planeta.luas;
+        temperatura.textContent = planeta.temperatura;
+        curiosidade.textContent = planeta.curiosidade;
         modal.classList.add("aberto");
         document.body.classList.add("modal-aberto");
         fechar.focus();
