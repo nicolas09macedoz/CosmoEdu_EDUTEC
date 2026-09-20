@@ -217,6 +217,11 @@ header::after {
     transform: translateY(-1px);
 }
 
+nav a:focus-visible {
+    outline: 2px solid #8fd7ff;
+    outline-offset: 4px;
+}
+
 
 /* =========================
    NAV
@@ -419,6 +424,10 @@ main {
     letter-spacing: -4px;
 
     margin-top: 20px;
+    background: linear-gradient(100deg, #ffffff 20%, #9edcff 65%, #b2a5ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .titulo h2::after {
@@ -523,6 +532,7 @@ main {
         border-color .4s ease,
         box-shadow .4s ease,
         background .4s ease;
+    isolation: isolate;
 }
 
 
@@ -726,6 +736,10 @@ main {
     color: #ffffff;
 }
 
+.conquistas div:hover .ano {
+    text-shadow: 0 0 12px rgba(143, 215, 255, 0.55);
+}
+
 
 /* =========================
    FOOTER
@@ -885,6 +899,85 @@ footer p {
 
         transform:
             translateY(0);
+    }
+}
+
+@media (max-width: 1100px) {
+    body {
+        min-width: 0;
+    }
+
+    header {
+        padding: 0 24px;
+    }
+
+    main {
+        width: min(100% - 40px, 1000px);
+    }
+
+    .conquistas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 680px) {
+    header {
+        height: auto;
+        min-height: 82px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px;
+    }
+
+    nav {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+    }
+
+    nav a {
+        padding: 5px 10px 10px;
+        font-size: 13px;
+    }
+
+    nav a::after {
+        left: 10px;
+        right: 10px;
+    }
+
+    .exploracao {
+        padding: 75px 0 90px;
+    }
+
+    .titulo {
+        margin-bottom: 45px;
+    }
+
+    .titulo h2 {
+        font-size: clamp(40px, 11vw, 68px);
+        letter-spacing: -2px;
+    }
+
+    .titulo::after {
+        position: static;
+        display: block;
+        margin-top: 24px;
+        font-size: 8px;
+    }
+
+    .conquistas {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .conquistas div {
+        min-height: 245px;
+        padding: 26px;
+    }
+
+    footer {
+        padding: 58px 20px 30px;
     }
 }
 

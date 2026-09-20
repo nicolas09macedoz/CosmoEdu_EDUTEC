@@ -213,6 +213,11 @@ header::after {
     transform: translateY(-1px);
 }
 
+nav a:focus-visible {
+    outline: 2px solid #8fd7ff;
+    outline-offset: 4px;
+}
+
 
 /* =========================================================
    NAVEGAÇÃO
@@ -413,6 +418,10 @@ main {
     letter-spacing: -4px;
 
     margin: 20px 0;
+    background: linear-gradient(100deg, #ffffff 20%, #9edcff 65%, #b2a5ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .titulo h2::after {
@@ -503,6 +512,7 @@ main {
         transform .45s ease,
         border-color .45s ease,
         box-shadow .45s ease;
+    isolation: isolate;
 }
 
 .filme::before {
@@ -611,6 +621,9 @@ main {
 
 .filme-texto {
     position: relative;
+    min-height: 184px;
+    display: flex;
+    flex-direction: column;
 
     padding: 24px 23px 27px;
 
@@ -681,6 +694,18 @@ main {
     line-height: 1.65;
 
     color: #929bad;
+}
+
+.filmes-cards .filme:nth-child(2) .filme-texto::before {
+    content: "SOBREVIVÊNCIA";
+}
+
+.filmes-cards .filme:nth-child(3) .filme-texto::before {
+    content: "MISSÃO";
+}
+
+.filmes-cards .filme:nth-child(4) .filme-texto::before {
+    content: "ÓRBITA";
 }
 
 
@@ -836,6 +861,84 @@ footer::after {
 
         transform:
             translateY(0);
+    }
+}
+
+@media (max-width: 1100px) {
+    body {
+        min-width: 0;
+    }
+
+    header {
+        padding: 0 24px;
+    }
+
+    main {
+        width: min(100% - 40px, 1000px);
+    }
+
+    .filmes-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 680px) {
+    header {
+        height: auto;
+        min-height: 82px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px;
+    }
+
+    nav {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+    }
+
+    nav a {
+        padding: 5px 10px 10px;
+        font-size: 13px;
+    }
+
+    nav a::after {
+        left: 10px;
+        right: 10px;
+    }
+
+    .filmes {
+        padding: 75px 0 90px;
+    }
+
+    .titulo {
+        margin-bottom: 45px;
+    }
+
+    .titulo h2 {
+        font-size: clamp(40px, 11vw, 68px);
+        letter-spacing: -2px;
+    }
+
+    .titulo::after {
+        position: static;
+        display: block;
+        margin-top: 24px;
+        font-size: 8px;
+    }
+
+    .filmes-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .filme img {
+        height: min(390px, 72vw);
+    }
+
+    footer {
+        padding: 58px 20px 30px;
     }
 }
 

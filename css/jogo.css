@@ -1,4 +1,5 @@
-css
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 /* ================================
    RESET
 ================================ */
@@ -28,7 +29,7 @@ body {
         ),
         #050914;
     color: #ffffff;
-    font-family: Arial, sans-serif;
+    font-family: "Space Grotesk", Arial, sans-serif;
 }
 
 /* ================================
@@ -79,7 +80,6 @@ a {
 ================================ */
 
 header {
-    width: 100%;
     height: 82px;
     padding: 0 55px;
 
@@ -92,7 +92,7 @@ header {
     z-index: 100;
 
     background: rgba(5, 9, 20, 0.88);
-    border-bottom: 1px solid rgba(143, 215, 255, 0.15);
+    border-bottom: 1px solid rgba(143, 215, 255, 0.12);
 
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -102,14 +102,22 @@ header {
 
 .logo {
     color: #ffffff;
-    font-size: 23px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 700;
     letter-spacing: 2px;
-    white-space: nowrap;
 }
 
 .logo span {
     color: #8fd7ff;
+}
+
+header .logo {
+    transition: 0.3s ease;
+}
+
+header .logo:hover {
+    color: #8fd7ff;
+    transform: translateY(-2px);
 }
 
 /* Menu */
@@ -117,21 +125,19 @@ header {
 nav {
     display: flex;
     align-items: center;
-    gap: 27px;
+    gap: 28px;
 }
 
 nav a {
     position: relative;
 
-    color: #78869e;
+    color: #9faabd;
     font-size: 14px;
     font-weight: 500;
 
-    padding: 8px 0;
+    padding: 30px 0;
 
-    transition:
-        color 0.3s ease,
-        transform 0.3s ease;
+    transition: 0.3s ease;
 }
 
 /* Linha embaixo do link */
@@ -141,24 +147,28 @@ nav a::after {
 
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 20px;
 
     width: 0;
     height: 2px;
 
     background: #8fd7ff;
+    box-shadow: 0 0 10px #8fd7ff;
 
     transition: width 0.3s ease;
 }
 
-nav a:hover,
-nav a.active {
-    color: #8fd7ff;
+nav a:hover {
+    color: #ffffff;
 }
 
 nav a:hover::after,
 nav a.active::after {
     width: 100%;
+}
+
+nav a.active {
+    color: #ffffff;
 }
 
 /* ================================
@@ -212,6 +222,7 @@ main {
         #8fd7ff
     );
 
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

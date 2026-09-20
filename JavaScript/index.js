@@ -1,158 +1,51 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const ano = document.getElementById("ano");
+    const imagem = document.querySelector(".inicio-imagem img");
+    const secoes = document.querySelectorAll("main section");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-
-
-
-const header = document.querySelector("header");
-const imagem = document.querySelector(".inicio-imagem img");
-const botao = document.querySelector(".botao");
-const curiosidades = document.querySelectorAll(".curiosidade");
-const secoes = document.querySelectorAll("section");
-const ano = document.querySelector("#ano");
-
-
-
-
-if (ano) {
-    ano.textContent = new Date().getFullYear();
-}
-
-
-
-
-window.addEventListener("scroll", function () {
-
-    if (window.scrollY > 60) {
-        header.classList.add("rolando");
-    } else {
-        header.classList.remove("rolando");
+    if (ano) {
+        ano.textContent = new Date().getFullYear();
     }
 
-});
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener("click", function (evento) {
+            const destino = document.querySelector(link.getAttribute("href"));
 
+            if (!destino) {
+                return;
+            }
 
-
-
-if (imagem) {
-
-    imagem.addEventListener("mouseenter", function () {
-        imagem.classList.add("aproximar");
+            evento.preventDefault();
+            destino.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
     });
 
-    imagem.addEventListener("mouseleave", function () {
-        imagem.classList.remove("aproximar");
-    });
-
-}
-
-
-
-
-if (botao) {
-
-    botao.addEventListener("mouseenter", function () {
-        botao.classList.add("ativo");
-    });
-
-    botao.addEventListener("mouseleave", function () {
-        botao.classList.remove("ativo");
-    });
-
-}
-
-
-
-
-curiosidades.forEach(function (curiosidade, indice) {
-
-    curiosidade.style.animationDelay = (indice * 0.1) + "s";
-
-    curiosidade.addEventListener("click", function () {
-
-        curiosidades.forEach(function (item) {
-            item.classList.remove("selecionada");
+    if (!prefersReducedMotion && imagem) {
+        imagem.addEventListener("pointermove", function (evento) {
+            const area = imagem.getBoundingClientRect();
+            const deslocamentoX = ((evento.clientX - area.left) / area.width - 0.5) * 8;
+            const deslocamentoY = ((evento.clientY - area.top) / area.height - 0.5) * 8;
+            imagem.style.transform = `translate(${deslocamentoX}px, ${deslocamentoY}px) scale(1.02)`;
         });
 
-        curiosidade.classList.add("selecionada");
-
-    });
-
-});
-
-
-
-
-const observador = new IntersectionObserver(function (elementos) {
-
-    elementos.forEach(function (elemento) {
-
-        if (elemento.isIntersecting) {
-
-            elemento.target.classList.add("visivel");
-
-        }
-
-    });
-
-}, {
-    threshold: 0.15
-});
-
-
-secoes.forEach(function (secao) {
-    observador.observe(secao);
-});
-
-
-
-
-const botaoTopo = document.createElement("button");
-
-botaoTopo.textContent = "↑";
-botaoTopo.title = "Voltar ao topo";
-botaoTopo.className = "botao-topo";
-
-document.body.appendChild(botaoTopo);
-
-
-window.addEventListener("scroll", function () {
-
-    if (window.scrollY > 450) {
-        botaoTopo.classList.add("visivel");
-    } else {
-        botaoTopo.classList.remove("visivel");
+        imagem.addEventListener("pointerleave", function () {
+            imagem.style.transform = "";
+        });
     }
 
-});
+    if ("IntersectionObserver" in window) {
+        const observador = new IntersectionObserver(function (entradas) {
+            entradas.forEach(function (entrada) {
+                if (entrada.isIntersecting) {
+                    entrada.target.classList.add("visivel");
+                    observador.unobserve(entrada.target);
+                }
+            });
+        }, { threshold: 0.15 });
 
-
-botaoTopo.addEventListener("click", function () {
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-});
-
-
-
-
-const links = document.querySelectorAll("nav a");
-
-links.forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-        links.forEach(function (item) {
-            item.classList.remove("clicado");
+        secoes.forEach(function (secao) {
+            observador.observe(secao);
         });
-
-        link.classList.add("clicado");
-
-    });
-
-});
-
-
+    }
 });
