@@ -84,6 +84,46 @@
             }
         });
 
+        document.body.classList.add("pagina-pronta");
+
+        const topo = document.createElement("button");
+        topo.className = "botao-topo-global";
+        topo.type = "button";
+        topo.setAttribute("aria-label", "Voltar ao topo");
+        topo.textContent = "↑";
+        document.body.appendChild(topo);
+
+        function atualizarTopo() {
+            topo.classList.toggle("visivel", window.scrollY > 420);
+        }
+
+        window.addEventListener("scroll", atualizarTopo, { passive: true });
+        topo.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: reduzMovimento ? "auto" : "smooth" });
+        });
+        atualizarTopo();
+
+        document.addEventListener("keydown", function (evento) {
+            if (evento.key === "/" && !["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement.tagName)) {
+                const busca = document.querySelector("#busca-site");
+                if (busca) {
+                    evento.preventDefault();
+                    busca.focus();
+                }
+            }
+        });
+
+        if (!reduzMovimento) {
+            document.querySelectorAll('a[href$=".html"]').forEach(function (link) {
+                link.addEventListener("click", function (evento) {
+                    if (evento.defaultPrevented || link.target === "_blank" || evento.metaKey || evento.ctrlKey) return;
+                    evento.preventDefault();
+                    document.body.classList.add("saindo");
+                    window.setTimeout(function () { window.location.href = link.href; }, 220);
+                });
+            });
+        }
+
         if (reduzMovimento) {
             return;
         }

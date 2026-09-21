@@ -36,6 +36,12 @@
 
 <body>
 
+<div class="faixa-professor" id="faixa-professor" role="status">
+    <span>◈ MODO PROFESSOR ATIVO</span>
+    <small>Conteúdo pronto para apresentação</small>
+    <button id="sair-professor" type="button">Sair</button>
+</div>
+
 
 <header>
 
@@ -107,13 +113,26 @@
         </div>
 
 
-        <div class="inicio-imagem">
-
-            <img
-                src="img/terra.jpg"
-                alt="Imagem do planeta Terra vista do espaço"
-            >
-
+        <div class="inicio-imagem" aria-label="Astronauta flutuando no espaço">
+            <div class="cena-espacial" aria-hidden="true">
+                <span class="estrela-cena estrela-cena-1"></span>
+                <span class="estrela-cena estrela-cena-2"></span>
+                <span class="estrela-cena estrela-cena-3"></span>
+                <span class="estrela-cena estrela-cena-4"></span>
+                <div class="planeta-lua"></div>
+                <div class="orbita-astronauta"></div>
+                <div class="astronauta">
+                    <div class="astronauta-cabo"></div>
+                    <div class="astronauta-mochila"></div>
+                    <div class="astronauta-capacete"><span class="visor"></span></div>
+                    <div class="astronauta-corpo"></div>
+                    <div class="astronauta-braco astronauta-braco-esquerdo"></div>
+                    <div class="astronauta-braco astronauta-braco-direito"></div>
+                    <div class="astronauta-perna astronauta-perna-esquerda"></div>
+                    <div class="astronauta-perna astronauta-perna-direita"></div>
+                </div>
+                <span class="coordenadas">ORBITA 01<br>LAT 28.6° N</span>
+            </div>
         </div>
 
     </section>
@@ -262,6 +281,69 @@
 
         </div>
 
+    </section>
+
+    <section class="laboratorio" id="laboratorio">
+        <div class="laboratorio-cabecalho">
+            <p class="azul">04 / LABORATÓRIO COSMOEDU</p>
+            <h2>Explore o espaço<br><span>do seu jeito.</span></h2>
+            <p>Ferramentas rápidas para comparar mundos, acompanhar missões e descobrir o céu.</p>
+        </div>
+
+        <div class="lab-busca">
+            <span aria-hidden="true">⌕</span>
+            <input id="busca-site" type="search" placeholder="Buscar no CosmoEdu..." aria-label="Buscar no CosmoEdu">
+            <span id="busca-status">Explore por palavra-chave</span>
+        </div>
+
+        <div class="lab-grid">
+            <article class="lab-card lab-peso">
+                <div class="lab-card-topo"><span class="lab-icon">↓</span><span class="lab-tag">SIMULADOR</span></div>
+                <h3>Quanto você pesaria lá?</h3>
+                <p>Descubra como a gravidade muda em cada mundo.</p>
+                <div class="peso-controles"><label>Seu peso (kg)<input id="peso-terra" type="number" min="1" value="60"></label><label>Destino<select id="peso-planeta"><option value="0.38">Marte</option><option value="0.91">Vênus</option><option value="0.17">Lua</option><option value="2.34">Júpiter</option><option value="1.06">Netuno</option></select></label></div>
+                <div class="peso-resultado" id="peso-resultado"><strong>22,8 kg</strong><span>em Marte</span></div>
+            </article>
+
+            <article class="lab-card lab-conquistas">
+                <div class="lab-card-topo"><span class="lab-icon">✦</span><span class="lab-tag">PROGRESSO</span></div>
+                <h3>Sua missão</h3>
+                <p id="conquista-resumo">Descubra experiências para liberar seus registros.</p>
+                <div class="conquista-medalhas"><span class="medalha liberada">✦</span><span class="medalha">◌</span><span class="medalha">◎</span><span class="medalha">⌁</span></div>
+                <strong class="conquista-contador" id="conquista-contador">1 / 4 descobertas</strong>
+            </article>
+
+            <article class="lab-card lab-lua">
+                <div class="lab-card-topo"><span class="lab-icon">◐</span><span class="lab-tag">MAPA LUNAR</span></div>
+                <h3>Fases e missões da Lua</h3>
+                <div class="lua-visual" id="lua-visual"><span class="lua-cratera lua-cratera-1"></span><span class="lua-cratera lua-cratera-2"></span><span class="lua-cratera lua-cratera-3"></span></div>
+                <div class="lua-controle"><button type="button" data-fase="0" aria-label="Lua nova">●</button><button type="button" data-fase="1" aria-label="Lua crescente">◐</button><button type="button" data-fase="2" aria-label="Lua cheia">○</button><button type="button" data-fase="3" aria-label="Lua minguante">◑</button></div>
+                <strong id="lua-fase">Lua Nova</strong>
+            </article>
+
+            <article class="lab-card lab-calendario">
+                <div class="lab-card-topo"><span class="lab-icon">◫</span><span class="lab-tag">CALENDÁRIO</span></div>
+                <h3>Próximos eventos celestes</h3>
+                <div class="evento-celeste"><strong>12 AGO</strong><span>Chuva de meteoros Perseidas</span></div>
+                <div class="evento-celeste"><strong>07 SET</strong><span>Eclipse lunar parcial</span></div>
+                <div class="evento-celeste"><strong>21 DEZ</strong><span>Solstício e grande conjunção</span></div>
+            </article>
+
+            <article class="lab-card lab-missoes">
+                <div class="lab-card-topo"><span class="lab-icon">↗</span><span class="lab-tag">MISSÕES</span></div>
+                <h3>Diário de exploração</h3>
+                <div class="missao-seletor"><button class="ativo" data-missao="apollo">Apollo 11</button><button data-missao="voyager">Voyager</button><button data-missao="webb">James Webb</button></div>
+                <p id="missao-texto">Em 1969, a Apollo 11 levou os primeiros seres humanos à superfície da Lua.</p>
+                <span class="missao-ano" id="missao-ano">1969 // LUA</span>
+            </article>
+        </div>
+
+        <div class="lab-galeria">
+            <div><p class="azul">GALERIA ESPACIAL</p><h3>Registros da nossa vizinhança.</h3></div>
+            <div class="galeria-imagens"><img src="img/terra-real.jpg" alt="Terra vista do espaço"><img src="img/marte-real.jpg" alt="Marte em cores reais"><img src="img/jupiter-real.jpg" alt="Júpiter em cores reais"><img src="img/netuno-real.jpg" alt="Netuno em cores reais"></div>
+        </div>
+
+        <button class="modo-professor" id="modo-professor" type="button" aria-pressed="false">Ativar modo professor <span>◈</span></button>
     </section>
 
 </main>

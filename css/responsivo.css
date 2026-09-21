@@ -9,6 +9,51 @@ body {
         #050914 !important;
 }
 
+    body {
+        opacity: 0;
+        transition: opacity 0.32s ease;
+    }
+
+    body.pagina-pronta {
+        opacity: 1;
+    }
+
+    body.saindo {
+        opacity: 0;
+    }
+
+    .botao-topo-global {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 900;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(143, 215, 255, 0.45);
+        border-radius: 50%;
+        background: rgba(7, 14, 29, 0.9);
+        color: #8fd7ff;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(12px);
+        transition: 0.3s ease;
+        box-shadow: 0 0 20px rgba(143, 215, 255, 0.12);
+    }
+
+    .botao-topo-global.visivel {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .botao-topo-global:hover {
+        background: #8fd7ff;
+        color: #06101e;
+        box-shadow: 0 0 30px rgba(143, 215, 255, 0.35);
+    }
+
 body::before {
     opacity: 0.45 !important;
     filter: drop-shadow(0 0 16px rgba(143, 215, 255, 0.18));
@@ -351,6 +396,45 @@ a:focus-visible,
         margin: 0 auto;
     }
 
+    .cena-espacial {
+        transform: scale(0.84) translate(var(--mouse-x, 0px), var(--mouse-y, 0px));
+    }
+
+    .astronauta {
+        transform: translate(-50%, -47%) rotate(-11deg) scale(0.88);
+    }
+
+    .coordenadas {
+        right: 4px;
+        bottom: 18px;
+    }
+
+    .laboratorio {
+        padding: 76px 16px 86px !important;
+    }
+
+    .lab-grid,
+    .lab-galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .lab-galeria {
+        gap: 22px;
+        padding: 20px;
+    }
+
+    .galeria-imagens {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .galeria-imagens img {
+        height: 115px;
+    }
+
+    .lab-busca span:last-child {
+        display: none;
+    }
+
     .inicio-imagem::before {
         width: 96% !important;
         height: 96% !important;
@@ -401,9 +485,22 @@ a:focus-visible,
     main {
         width: min(100% - 24px, 1160px) !important;
     }
+
+    .botao-topo-global {
+        right: 14px;
+        bottom: 14px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
+    body {
+        opacity: 1 !important;
+        transition: none !important;
+    }
+
+    .botao-topo-global {
+        transition: none !important;
+    }
     body.animacoes-ativas .revelar-item,
     body.animacoes-ativas .revelar-item.revelado {
         opacity: 1;
