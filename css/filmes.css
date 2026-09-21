@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    min-width: 1000px;
+    min-width: 0;
 
     color: #fff;
 
@@ -600,6 +600,7 @@ main {
     display: block;
 
     object-fit: cover;
+    object-position: center top;
 
     transition:
         transform .65s ease,

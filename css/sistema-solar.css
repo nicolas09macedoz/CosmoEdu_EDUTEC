@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    min-width: 1000px;
+    min-width: 0;
     background:
         radial-gradient(circle at 20% 20%, rgba(80, 150, 255, 0.10), transparent 25%),
         radial-gradient(circle at 80% 70%, rgba(120, 90, 255, 0.10), transparent 30%),
@@ -222,6 +222,7 @@ main {
     margin-bottom: 15px;
     transition: 0.45s ease;
     filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.5));
+    mix-blend-mode: screen;
 }
 
 .planeta:hover img {
@@ -468,6 +469,219 @@ main {
     box-shadow: 0 30px 90px rgba(0, 0, 0, 0.58), 0 0 35px rgba(143, 215, 255, 0.10);
 }
 
+.modelo-planeta {
+    min-height: 330px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: none;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(91, 166, 255, 0.16), transparent 35%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        #070d1d;
+    background-size: auto, 24px 24px, auto;
+}
+
+.modelo-planeta.arrastando {
+    cursor: grabbing;
+}
+
+.modelo-espaco {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    perspective: 700px;
+    transform-style: preserve-3d;
+}
+
+.modelo-esfera {
+    width: 190px;
+    aspect-ratio: 1;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 50%;
+    background-image: var(--textura-planeta);
+    background-position: center;
+    background-size: 200% 145%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-blend-mode: normal;
+    mix-blend-mode: normal;
+    box-shadow:
+        inset -10px -8px 16px rgba(0, 0, 0, 0.24),
+        inset 12px 9px 14px rgba(255, 255, 255, 0.12),
+        0 0 28px rgba(143, 215, 255, 0.28);
+    transform: rotateY(var(--rotacao-manual, 0deg));
+    animation: planeta-girar 14s linear infinite;
+    will-change: background-position, transform;
+}
+
+.modelo-esfera::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: 2;
+    border: 2px solid rgba(255, 255, 255, 0.16);
+    border-radius: inherit;
+    box-shadow: inset 5px 3px 8px rgba(255, 255, 255, 0.14);
+    pointer-events: none;
+}
+
+.modelo-esfera::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    background:
+        radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.2), transparent 15%),
+        linear-gradient(105deg, rgba(255, 255, 255, 0.08), transparent 34%);
+    pointer-events: none;
+}
+
+.modelo-anel {
+    position: absolute;
+    z-index: 1;
+    width: 255px;
+    height: 68px;
+    border: 10px solid rgba(213, 185, 143, 0.78);
+    border-left-color: rgba(245, 222, 186, 0.88);
+    border-right-color: rgba(119, 92, 70, 0.72);
+    border-radius: 50%;
+    transform: rotateX(68deg) rotateZ(-14deg);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 0 8px rgba(231, 204, 163, 0.35);
+}
+
+.modelo-anel-frente {
+    z-index: 4;
+    clip-path: inset(50% 0 0);
+}
+
+.modelo-planeta.com-anel .modelo-anel {
+    opacity: 1;
+}
+
+.modelo-planeta[data-planeta="terra"] .modelo-esfera::before {
+    border-color: rgba(102, 205, 255, 0.62);
+    box-shadow: 0 0 12px rgba(63, 180, 255, 0.8), inset 5px 3px 8px rgba(255, 255, 255, 0.18);
+}
+
+.modelo-planeta[data-planeta="urano"] .modelo-esfera::before,
+.modelo-planeta[data-planeta="netuno"] .modelo-esfera::before {
+    border-color: rgba(115, 225, 255, 0.55);
+    box-shadow: 0 0 14px rgba(67, 189, 255, 0.65), inset 5px 3px 8px rgba(255, 255, 255, 0.16);
+}
+
+.modelo-planeta[data-planeta="jupiter"] .modelo-esfera {
+    background-image:
+        linear-gradient(0deg, transparent 38%, rgba(116, 61, 32, 0.28) 40%, transparent 45%, rgba(255, 225, 177, 0.15) 57%, transparent 62%),
+        var(--textura-planeta);
+    background-blend-mode: soft-light, screen;
+}
+
+.modelo-planeta[data-planeta="saturno"] .modelo-anel {
+    border-width: 11px;
+    border-color: rgba(218, 193, 153, 0.82);
+}
+
+.modelo-planeta[data-planeta="saturno"] .modelo-esfera {
+    background: transparent;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #b79b6b;
+    box-shadow:
+        inset -25px -16px 30px rgba(45, 29, 18, 0.3),
+        inset 14px 9px 18px rgba(255, 249, 216, 0.22),
+        0 0 30px rgba(222, 187, 125, 0.32);
+    background-blend-mode: screen, multiply, normal;
+    mix-blend-mode: normal;
+    animation: none;
+}
+
+.modelo-planeta[data-planeta="saturno"] .modelo-esfera::before,
+.modelo-planeta[data-planeta="saturno"] .modelo-esfera::after {
+    display: block;
+}
+
+.modelo-planeta[data-planeta="saturno"] .modelo-esfera::before {
+    inset: 0;
+    border: 0;
+    background:
+        radial-gradient(circle at 31% 27%, rgba(255, 247, 211, 0.95) 0 5%, rgba(255, 231, 169, 0.35) 16%, transparent 30%),
+        linear-gradient(105deg, rgba(255, 238, 190, 0.2), transparent 42%, rgba(72, 48, 30, 0.3) 100%),
+        repeating-linear-gradient(0deg, #b79b6b 0 12px, #c9b17f 13px 20px, #aa8b5f 21px 26px, #c1a776 27px 35px);
+    box-shadow: inset 14px 9px 18px rgba(255, 249, 216, 0.22);
+}
+
+.modelo-planeta[data-planeta="saturno"] .modelo-esfera::after {
+    background:
+        radial-gradient(ellipse at 30% 24%, rgba(255, 255, 235, 0.18), transparent 22%),
+        linear-gradient(110deg, rgba(255, 255, 255, 0.08), transparent 40%, rgba(36, 24, 16, 0.2));
+}
+
+.modelo-planeta[data-planeta="saturno"] .modelo-anel {
+    display: block;
+    width: 282px;
+    height: 78px;
+    border-width: 9px;
+    border-color: rgba(206, 177, 128, 0.74);
+    border-left-color: rgba(249, 226, 177, 0.9);
+    border-right-color: rgba(106, 75, 49, 0.7);
+    box-shadow:
+        0 0 5px rgba(239, 209, 157, 0.5),
+        inset 0 0 5px rgba(70, 47, 28, 0.55);
+}
+
+.modelo-planeta[data-planeta="saturno"] .modelo-anel-fundo {
+    z-index: 1;
+}
+
+.modelo-planeta[data-planeta="saturno"] .modelo-anel-frente {
+    z-index: 4;
+    clip-path: inset(50% 0 0);
+}
+
+.modelo-legenda {
+    position: absolute;
+    right: 18px;
+    bottom: 16px;
+    z-index: 4;
+    color: #8fd7ff;
+    font-family: "Space Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.modelo-legenda small {
+    display: block;
+    margin-top: 5px;
+    color: #7f8ba0;
+    font-family: "Space Grotesk", Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0;
+    text-align: right;
+}
+
+@keyframes planeta-girar {
+    from {
+        background-position: 0 center;
+    }
+    to {
+        background-position: 100% center;
+    }
+}
+
 .modal-conteudo > img {
     width: 100%;
     height: 100%;
@@ -687,6 +901,222 @@ transition: 0.3s ease;
 header.rolando {
 background: rgba(7, 12, 25, 0.96);
 box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+.experiencias {
+    display: grid;
+    gap: 24px;
+    margin-top: 86px;
+}
+
+.experiencias-cabecalho {
+    max-width: 650px;
+    margin-bottom: 10px;
+}
+
+.experiencias-cabecalho h2 {
+    margin-bottom: 12px;
+    color: #ffffff;
+    font-size: clamp(36px, 5vw, 58px);
+    letter-spacing: -2px;
+}
+
+.experiencias-cabecalho > p:last-child {
+    color: #9da8bb;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.experiencia {
+    padding: 34px;
+    background: linear-gradient(145deg, rgba(19, 30, 52, 0.92), rgba(8, 14, 27, 0.96));
+    border: 1px solid rgba(143, 215, 255, 0.14);
+    border-radius: 22px;
+}
+
+.experiencia-titulo {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.experiencia-numero {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    place-items: center;
+    border: 1px solid rgba(143, 215, 255, 0.35);
+    border-radius: 50%;
+    color: #8fd7ff;
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+}
+
+.experiencia .azul {
+    margin-bottom: 8px;
+    font-size: 10px;
+}
+
+.experiencia h3 {
+    color: #ffffff;
+    font-size: 28px;
+}
+
+.mapa-palco {
+    width: min(100%, 820px);
+    height: 430px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    background: radial-gradient(circle at center, rgba(255, 180, 75, 0.12), transparent 16%), #060b19;
+    border: 1px solid rgba(143, 215, 255, 0.1);
+    border-radius: 16px;
+}
+
+.mapa-palco::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    background-image: radial-gradient(circle, #ffffff 1px, transparent 1px);
+    background-size: 90px 90px;
+}
+
+.mapa-sol {
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fffbd0, #ffc95a 45%, #ff8c32);
+    box-shadow: 0 0 25px rgba(255, 190, 70, 0.8), 0 0 65px rgba(255, 150, 40, 0.35);
+    transform: translate(-50%, -50%);
+}
+
+.mapa-orbita {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+    border: 1px solid rgba(143, 215, 255, 0.22);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: mapa-orbita 18s linear infinite;
+}
+
+.mapa-orbita-1 { width: 88px; height: 48px; }
+.mapa-orbita-2 { width: 145px; height: 78px; animation-duration: 24s; }
+.mapa-orbita-3 { width: 205px; height: 110px; animation-duration: 30s; }
+.mapa-orbita-4 { width: 270px; height: 145px; animation-duration: 38s; }
+.mapa-orbita-5 { width: 355px; height: 190px; animation-duration: 48s; }
+.mapa-orbita-6 { width: 450px; height: 240px; animation-duration: 58s; }
+.mapa-orbita-7 { width: 570px; height: 304px; animation-duration: 70s; }
+.mapa-orbita-8 { width: 710px; height: 378px; animation-duration: 84s; }
+
+.mapa-planeta {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    z-index: 5;
+    pointer-events: auto;
+    top: 50%;
+    right: -6px;
+    padding: 0;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: 0.25s ease;
+}
+
+.mapa-planeta:hover,
+.mapa-planeta.selecionado {
+    z-index: 3;
+    box-shadow: 0 0 0 7px rgba(143, 215, 255, 0.16), 0 0 22px currentColor;
+    transform: translateY(-50%) scale(1.5);
+}
+
+.mapa-mercurio { background: #a9a9a0; color: #a9a9a0; }
+.mapa-venus { background: #dcae68; color: #dcae68; }
+.mapa-terra { background: #4aa9d8; color: #4aa9d8; }
+.mapa-marte { background: #b65d3e; color: #b65d3e; }
+.mapa-jupiter { width: 21px; height: 21px; right: -10px; background: #d7a778; color: #d7a778; }
+.mapa-saturno { width: 19px; height: 19px; right: -9px; background: #d5bb8e; color: #d5bb8e; }
+.mapa-saturno::after { content: ""; position: absolute; width: 29px; height: 8px; top: 3px; left: -7px; border: 1px solid #d5bb8e; border-radius: 50%; transform: rotate(-15deg); }
+.mapa-urano { background: #7ecdd2; color: #7ecdd2; }
+.mapa-netuno { background: #4777c9; color: #4777c9; }
+
+@keyframes mapa-orbita { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+.mapa-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 820px;
+    margin: 16px auto 0;
+    padding: 15px 18px;
+    background: rgba(143, 215, 255, 0.06);
+    border-left: 2px solid #8fd7ff;
+}
+
+.mapa-info strong { color: #ffffff; font-size: 18px; }
+.mapa-info span { color: #95a3b9; font-size: 13px; }
+
+.comparador-controles {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+    gap: 18px;
+    max-width: 720px;
+    margin: 0 auto 26px;
+}
+
+.comparador-controles label { display: grid; gap: 8px; color: #8f9bb0; font-size: 12px; }
+.comparador-controles select { padding: 13px 14px; border: 1px solid rgba(143, 215, 255, 0.25); border-radius: 8px; background: #0a1324; color: #ffffff; font: inherit; cursor: pointer; }
+.comparador-versus { padding-bottom: 13px; color: #8fd7ff; font-family: "Space Mono", monospace; font-size: 12px; }
+.comparador-tabela { max-width: 720px; margin: auto; }
+.comparador-nomes, .comparador-linha { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; text-align: center; }
+.comparador-nomes { padding: 16px 10px; color: #8fd7ff; font-size: 18px; }
+.comparador-nomes span, .comparador-linha small { color: #718097; font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: 1px; }
+.comparador-linha { padding: 14px 10px; border-top: 1px solid rgba(143, 215, 255, 0.1); color: #ffffff; }
+.comparador-linha small { text-transform: uppercase; }
+
+.tempo-trilha { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; position: relative; }
+.tempo-trilha::before { content: ""; position: absolute; top: 16px; left: 4%; right: 4%; height: 1px; background: rgba(143, 215, 255, 0.3); }
+.tempo-evento { position: relative; padding: 42px 16px 18px; border: 1px solid rgba(143, 215, 255, 0.12); border-radius: 12px; cursor: pointer; transition: 0.3s ease; }
+.tempo-evento::before { content: ""; position: absolute; top: 10px; left: 16px; width: 11px; height: 11px; border: 3px solid #071021; border-radius: 50%; background: #52647d; box-shadow: 0 0 0 1px rgba(143, 215, 255, 0.3); }
+.tempo-evento.ativo, .tempo-evento:hover { border-color: #8fd7ff; background: rgba(143, 215, 255, 0.08); transform: translateY(-5px); }
+.tempo-evento.ativo::before { background: #8fd7ff; box-shadow: 0 0 16px #8fd7ff; }
+.tempo-evento span { color: #8fd7ff; font-family: "Space Mono", monospace; font-size: 10px; }
+.tempo-evento h4 { margin: 12px 0 8px; color: #ffffff; font-size: 17px; }
+.tempo-evento p { color: #8f9bb0; font-size: 13px; line-height: 1.5; }
+
+@media (max-width: 760px) {
+    .experiencias { margin-top: 62px; }
+    .experiencia { padding: 24px 18px; }
+    .experiencia h3 { font-size: 23px; }
+    .mapa-palco { height: 300px; }
+    .mapa-orbita-1 { width: 20%; height: 16%; }
+    .mapa-orbita-2 { width: 30%; height: 24%; }
+    .mapa-orbita-3 { width: 40%; height: 32%; }
+    .mapa-orbita-4 { width: 50%; height: 40%; }
+    .mapa-orbita-5 { width: 62%; height: 50%; }
+    .mapa-orbita-6 { width: 74%; height: 60%; }
+    .mapa-orbita-7 { width: 86%; height: 70%; }
+    .mapa-orbita-8 { width: 96%; height: 80%; }
+    .mapa-info { align-items: flex-start; flex-direction: column; gap: 7px; }
+    .comparador-controles { grid-template-columns: 1fr 1fr; }
+    .comparador-versus { grid-column: 1 / -1; grid-row: 2; padding: 0; text-align: center; }
+    .comparador-controles label:last-child { grid-column: 2; grid-row: 1; }
+    .tempo-trilha { grid-template-columns: 1fr; gap: 10px; }
+    .tempo-trilha::before { top: 18px; bottom: 18px; left: 21px; width: 1px; height: auto; }
+    .tempo-evento { padding: 16px 16px 16px 48px; }
+    .tempo-evento::before { top: 20px; left: 16px; }
 }
 
 .planeta {

@@ -1,10 +1,13 @@
 :root {
     --fundo: #060913;
     --painel: #0d1427;
+    --painel-2: #101d34;
     --texto: #f7f8ff;
     --suave: #aab2c7;
     --destaque: #b2a5ff;
+    --destaque-2: #8fd7ff;
     --linha: rgba(178, 165, 255, 0.18);
+    --linha-suave: rgba(143, 215, 255, 0.14);
 }
 
 * {
@@ -19,12 +22,13 @@ html {
 
 body {
     background:
-        radial-gradient(circle at 15% 12%, rgba(120, 104, 255, 0.16), transparent 28%),
-        radial-gradient(circle at 88% 68%, rgba(64, 176, 255, 0.10), transparent 30%),
+        radial-gradient(circle at 15% 12%, rgba(120, 104, 255, 0.18), transparent 22%),
+        radial-gradient(circle at 88% 72%, rgba(64, 176, 255, 0.12), transparent 26%),
+        radial-gradient(circle at 50% 100%, rgba(142, 173, 255, 0.08), transparent 38%),
         var(--fundo);
     color: var(--texto);
     font-family: "Space Grotesk", Arial, sans-serif;
-    min-width: 1000px;
+    min-width: 0;
     overflow-x: hidden;
 }
 
@@ -33,12 +37,13 @@ body::before {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    opacity: 0.32;
+    opacity: 0.42;
     background-image:
-        radial-gradient(circle, rgba(255,255,255,0.65) 1px, transparent 1px),
-        radial-gradient(circle, rgba(178,165,255,0.45) 1px, transparent 1px);
-    background-size: 95px 95px, 180px 180px;
-    background-position: 15px 25px, 90px 110px;
+        radial-gradient(circle, rgba(255,255,255,0.75) 1.2px, transparent 1.2px),
+        radial-gradient(circle, rgba(178,165,255,0.6) 1.4px, transparent 1.4px),
+        radial-gradient(circle, rgba(143,215,255,0.5) 1.1px, transparent 1.1px);
+    background-size: 120px 120px, 180px 180px, 240px 240px;
+    background-position: 15px 25px, 45px 130px, 100px 80px;
     z-index: -1;
 }
 
@@ -47,12 +52,12 @@ body::after {
     position: fixed;
     left: 50%;
     top: 42%;
-    width: 620px;
-    height: 620px;
+    width: 760px;
+    height: 760px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background: rgba(105, 92, 255, 0.04);
-    filter: blur(110px);
+    background: rgba(105, 92, 255, 0.05);
+    filter: blur(130px);
     pointer-events: none;
     z-index: -2;
 }
@@ -85,7 +90,7 @@ header {
 }
 
 header.rolando {
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
 }
 
 .logo {
@@ -96,11 +101,11 @@ header.rolando {
 }
 
 .logo span {
-    color: #b2a5ff;
+    color: var(--destaque);
 }
 
 header .logo:hover {
-    color: var(--destaque);
+    color: var(--destaque-2);
     transform: translateY(-2px);
 }
 
@@ -134,8 +139,8 @@ nav a::after {
     bottom: 20px;
     width: 0;
     height: 2px;
-    background: var(--destaque);
-    box-shadow: 0 0 10px var(--destaque);
+    background: linear-gradient(90deg, var(--destaque-2), var(--destaque));
+    box-shadow: 0 0 10px rgba(143, 215, 255, 0.9);
     transition: width 0.3s ease;
 }
 
@@ -152,11 +157,30 @@ main {
 .universo {
     min-height: calc(100vh - 82px);
     padding: 95px 35px 110px;
+    position: relative;
+}
+
+.universo::before {
+    content: "";
+    position: absolute;
+    inset: 30px 0 0;
+    background-image:
+        linear-gradient(rgba(143, 215, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(143, 215, 255, 0.05) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, transparent, black 12%, black 90%, transparent);
+    pointer-events: none;
+}
+
+.hero-universo {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 42px;
 }
 
 .titulo {
     max-width: 780px;
-    margin-bottom: 62px;
+    margin-bottom: 22px;
     animation: aparecer 0.7s ease both;
 }
 
@@ -164,20 +188,21 @@ main {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    color: #b2a5ff;
+    color: var(--destaque);
     font-size: 12px;
     letter-spacing: 2.5px;
     font-family: "Space Mono", monospace;
+    text-transform: uppercase;
 }
 
 .azul::before {
     content: "";
-    width: 6px;
-    height: 6px;
-    flex: 0 0 6px;
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
     border-radius: 50%;
-    background: #b2a5ff;
-    box-shadow: 0 0 8px #b2a5ff, 0 0 18px rgba(178, 165, 255, 0.65);
+    background: var(--destaque);
+    box-shadow: 0 0 8px var(--destaque), 0 0 18px rgba(178, 165, 255, 0.7);
 }
 
 .titulo h2 {
@@ -185,15 +210,157 @@ main {
     line-height: 1.02;
     margin-top: 18px;
     letter-spacing: -2px;
-    background: linear-gradient(100deg, #ffffff 15%, #b2a5ff 75%, #8fd7ff);
+    background: linear-gradient(100deg, #ffffff 15%, #b2a5ff 55%, #8fd7ff 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 32px rgba(143, 215, 255, 0.08);
+}
+
+.descricao-universo {
+    max-width: 640px;
+    margin-bottom: 30px;
+}
+
+.descricao-universo p {
+    font-size: 17px;
+    color: #b7c0d6;
+}
+
+.estatisticas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.estatisticas div {
+    min-width: 170px;
+    padding: 18px 20px;
+    border: 1px solid var(--linha-suave);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(13, 21, 39, 0.82), rgba(10, 16, 28, 0.96));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.estatisticas strong {
+    display: block;
+    font-size: 26px;
+    letter-spacing: -1px;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.estatisticas span {
+    font-size: 12px;
+    color: #9fb0d8;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.painel-universo {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 0.9fr 1.8fr;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.painel-destaque {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    min-height: 340px;
+    padding: 28px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(17, 25, 45, 0.96), rgba(9, 15, 25, 0.96));
+    border: 1px solid var(--linha);
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
+}
+
+.painel-destaque::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    right: -60px;
+    top: -40px;
+    background: rgba(143, 215, 255, 0.10);
+    border-radius: 50%;
+    filter: blur(35px);
+}
+
+.anel-orbita {
+    position: relative;
+    width: min(230px, 100%);
+    height: 170px;
+    margin: 0 auto;
+}
+
+.orbita {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(143, 215, 255, 0.35);
+    border-radius: 50%;
+}
+
+.orbita-1 {
+    transform: rotateX(68deg) scale(1.05);
+}
+
+.orbita-2 {
+    inset: 22px;
+    border-color: rgba(178, 165, 255, 0.42);
+    transform: rotateY(70deg);
+}
+
+.orbita-3 {
+    inset: 42px;
+    border-color: rgba(143, 215, 255, 0.24);
+    transform: rotateX(68deg);
+}
+
+.sol-central {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff9d8, #ffd37d 38%, #f5a623 100%);
+    box-shadow: 0 0 18px rgba(255, 201, 92, 0.9), 0 0 42px rgba(255, 184, 87, 0.6);
+}
+
+.texto-destaque {
+    position: relative;
+    z-index: 1;
+}
+
+.mini {
+    margin-bottom: 10px;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.texto-destaque h3 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.texto-destaque p:last-child {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #b9c4db;
 }
 
 .universo-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 22px;
 }
 
@@ -210,6 +377,7 @@ main {
     opacity: 1;
     transform: translateY(0);
     animation: cardEntrada 0.65s ease both;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 16px 38px rgba(4, 7, 14, 0.18);
 }
 
 .card:nth-child(2) {
@@ -244,21 +412,21 @@ main {
 .card::after {
     content: "";
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     right: -90px;
     bottom: -90px;
     border-radius: 50%;
     background: rgba(143, 215, 255, 0.08);
-    filter: blur(22px);
+    filter: blur(24px);
     transition: 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-8px);
-    border-color: #b2a5ff;
+    border-color: rgba(143, 215, 255, 0.65);
     box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.38),
+        0 18px 45px rgba(0, 0, 0, 0.42),
         0 0 30px rgba(178, 165, 255, 0.12);
 }
 
@@ -274,24 +442,24 @@ nav a:focus-visible {
 }
 
 .card.selecionado {
-    border-color: #b2a5ff;
-    box-shadow: 0 0 30px rgba(178, 165, 255, 0.18);
+    border-color: rgba(143, 215, 255, 0.7);
+    box-shadow: 0 0 28px rgba(143, 215, 255, 0.12);
 }
 
 .icone {
     position: relative;
     z-index: 1;
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid rgba(178, 165, 255, 0.35);
-    border-radius: 12px;
+    border-radius: 14px;
     color: #b2a5ff;
     font-size: 24px;
     margin-bottom: 25px;
-    box-shadow: inset 0 0 18px rgba(178, 165, 255, 0.08);
+    box-shadow: inset 0 0 18px rgba(178, 165, 255, 0.08), 0 0 22px rgba(143, 215, 255, 0.05);
     background: linear-gradient(145deg, rgba(178, 165, 255, 0.12), rgba(143, 215, 255, 0.03));
 }
 
@@ -319,6 +487,184 @@ nav a:focus-visible {
     z-index: 1;
     font-size: 15px;
     line-height: 1.65;
+}
+
+.constelacoes {
+    margin-top: 88px;
+    padding-top: 72px;
+    border-top: 1px solid var(--linha);
+}
+
+.constelacoes-cabecalho {
+    max-width: 650px;
+    margin-bottom: 28px;
+}
+
+.constelacoes-cabecalho h2 {
+    margin: 14px 0 12px;
+    color: #ffffff;
+    font-size: clamp(36px, 5vw, 58px);
+    letter-spacing: -2px;
+}
+
+.constelacoes-cabecalho > p:last-child {
+    color: #aab7cd;
+    line-height: 1.7;
+}
+
+.constelacoes-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
+    gap: 24px;
+    align-items: stretch;
+}
+
+.ceu-interativo {
+    min-height: 430px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(143, 215, 255, 0.2);
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at 30% 25%, rgba(178, 165, 255, 0.14), transparent 22%),
+        radial-gradient(circle at 80% 70%, rgba(143, 215, 255, 0.1), transparent 28%),
+        #070c1b;
+    box-shadow: inset 0 0 60px rgba(56, 76, 160, 0.12), 0 28px 60px rgba(0, 0, 0, 0.28);
+}
+
+.ceu-interativo::before,
+.ceu-interativo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px);
+    background-size: 92px 92px;
+    opacity: 0.4;
+}
+
+.ceu-interativo::after {
+    background-size: 137px 137px;
+    background-position: 35px 60px;
+    opacity: 0.25;
+}
+
+.linhas-constelacao {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.22;
+}
+
+.linhas-constelacao path {
+    fill: none;
+    stroke: #8fd7ff;
+    stroke-dasharray: 5 7;
+    stroke-width: 1.5;
+    transition: 0.3s ease;
+}
+
+.linhas-constelacao path.visivel {
+    opacity: 1;
+    stroke: #b2a5ff;
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 5px rgba(178, 165, 255, 0.8));
+}
+
+.estrela {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    z-index: 2;
+    padding: 0;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 8px #ffffff, 0 0 20px rgba(143, 215, 255, 0.8);
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.estrela:hover,
+.estrela.selecionada {
+    transform: scale(1.8);
+    box-shadow: 0 0 0 6px rgba(143, 215, 255, 0.14), 0 0 18px #ffffff, 0 0 32px #8fd7ff;
+}
+
+.estrela-orion-1 { left: 19%; top: 22%; width: 16px; height: 16px; }
+.estrela-orion-2 { left: 34%; top: 35%; }
+.estrela-orion-3 { left: 38%; top: 53%; width: 9px; height: 9px; }
+.estrela-orion-4 { left: 51%; top: 71%; width: 15px; height: 15px; }
+.estrela-ursa-1 { left: 60%; top: 19%; width: 14px; height: 14px; }
+.estrela-ursa-2 { left: 72%; top: 17%; }
+.estrela-ursa-3 { left: 65%; top: 38%; width: 15px; height: 15px; }
+.estrela-cassiopeia-1 { left: 21%; top: 79%; }
+.estrela-cassiopeia-2 { left: 52%; top: 67%; width: 9px; height: 9px; }
+.estrela-cruzeiro-1 { left: 79%; top: 68%; width: 16px; height: 16px; }
+.estrela-cruzeiro-2 { left: 88%; top: 53%; width: 9px; height: 9px; }
+.estrela-cruzeiro-3 { left: 83%; top: 81%; width: 10px; height: 10px; }
+.estrela-cruzeiro-4 { left: 73%; top: 76%; width: 8px; height: 8px; }
+
+.legenda-ceu {
+    position: absolute;
+    right: 22px;
+    bottom: 18px;
+    color: #7183a5;
+    font-family: "Space Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.constelacao-info {
+    padding: 30px;
+    border: 1px solid var(--linha);
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(18, 27, 51, 0.95), rgba(7, 12, 25, 0.98));
+}
+
+.constelacao-info h3 {
+    margin: 12px 0 14px;
+    color: #ffffff;
+    font-size: 34px;
+}
+
+.constelacao-resumo,
+.constelacao-mito {
+    color: #aab7cd;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.constelacao-dados {
+    display: grid;
+    gap: 10px;
+    margin: 26px 0;
+}
+
+.constelacao-dados div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(143, 215, 255, 0.12);
+}
+
+.constelacao-dados span {
+    color: #7183a5;
+    font-family: "Space Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.constelacao-dados strong {
+    color: #8fd7ff;
+    font-size: 14px;
+}
+
+.constelacao-mito {
+    padding-left: 16px;
+    border-left: 2px solid #b2a5ff;
 }
 
 footer {
@@ -416,6 +762,10 @@ footer .rodape {
     main {
         width: min(100% - 40px, 1000px);
     }
+
+    .painel-universo {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 760px) {
@@ -451,8 +801,33 @@ footer .rodape {
         font-size: clamp(38px, 10vw, 58px);
     }
 
+    .estatisticas {
+        flex-direction: column;
+    }
+
     .universo-cards {
         grid-template-columns: 1fr;
+    }
+
+    .constelacoes {
+        margin-top: 64px;
+        padding-top: 56px;
+    }
+
+    .constelacoes-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .ceu-interativo {
+        min-height: 330px;
+    }
+
+    .constelacao-info {
+        padding: 24px;
+    }
+
+    .constelacao-info h3 {
+        font-size: 30px;
     }
 
     footer {

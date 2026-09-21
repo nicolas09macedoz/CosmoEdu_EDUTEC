@@ -15,7 +15,7 @@ body {
         #050914;
     color: #ffffff;
     font-family: "Space Grotesk", Arial, sans-serif;
-    min-width: 1000px;
+    min-width: 0;
 }
 
 body::before {

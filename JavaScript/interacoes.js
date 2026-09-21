@@ -103,8 +103,16 @@
 
             superficie.addEventListener("pointermove", function (evento) {
                 const area = superficie.getBoundingClientRect();
+                const x = (evento.clientX - area.left) / area.width;
+                const y = (evento.clientY - area.top) / area.height;
+                const rotateY = (x - 0.5) * 10;
+                const rotateX = (0.5 - y) * 10;
+
                 superficie.style.setProperty("--luz-x", `${evento.clientX - area.left}px`);
                 superficie.style.setProperty("--luz-y", `${evento.clientY - area.top}px`);
+                superficie.style.setProperty("--tilt-x", `${rotateX.toFixed(2)}deg`);
+                superficie.style.setProperty("--tilt-y", `${rotateY.toFixed(2)}deg`);
+                superficie.style.transform = `perspective(1100px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-2px)`;
             });
 
             superficie.addEventListener("pointerenter", function () {
@@ -113,6 +121,9 @@
 
             superficie.addEventListener("pointerleave", function () {
                 superficie.classList.remove("luz-ativa");
+                superficie.style.setProperty("--tilt-x", "0deg");
+                superficie.style.setProperty("--tilt-y", "0deg");
+                superficie.style.transform = "";
             });
         });
 

@@ -67,7 +67,7 @@
 
     <div class="planeta" data-planeta="mercurio">
         <div class="numero">01</div>
-        <img src="img/mercurio.jpg" alt="Mercúrio">
+        <img src="img/mercurio-real.jpg" alt="Mercúrio">
         <h3>Mercúrio</h3>
         <p>O planeta mais próximo do Sol.</p>
         <span class="ver"></span>
@@ -76,7 +76,7 @@
 
     <div class="planeta" data-planeta="venus">
         <div class="numero">02</div>
-        <img src="img/venus.jpg" alt="Vênus">
+        <img src="img/venus-real.jpg" alt="Vênus">
         <h3>Vênus</h3>
         <p>Um planeta com temperaturas muito altas.</p>
         <span class="ver"></span>
@@ -85,7 +85,7 @@
 
     <div class="planeta destaque" data-planeta="terra">
         <div class="numero">03</div>
-        <img src="img/terra.jpg" alt="Terra">
+        <img src="img/terra-real.jpg" alt="Terra">
         <h3>Terra</h3>
         <p>Nosso planeta e lar da vida.</p>
         <span class="ver"></span>
@@ -94,7 +94,7 @@
 
     <div class="planeta" data-planeta="marte">
         <div class="numero">04</div>
-        <img src="img/marte.jpg" alt="Marte">
+        <img src="img/marte-real.jpg" alt="Marte">
         <h3>Marte</h3>
         <p>Conhecido como o planeta vermelho.</p>
         <span class="ver"></span>
@@ -103,7 +103,7 @@
 
     <div class="planeta" data-planeta="jupiter">
         <div class="numero">05</div>
-        <img src="img/jupiter.jpg" alt="Júpiter">
+        <img src="img/jupiter-real.jpg" alt="Júpiter">
         <h3>Júpiter</h3>
         <p>O maior planeta do Sistema Solar.</p>
         <span class="ver"></span>
@@ -112,7 +112,7 @@
 
     <div class="planeta" data-planeta="saturno">
         <div class="numero">06</div>
-        <img src="img/saturno.jpg" alt="Saturno">
+        <img src="img/saturno-real.jpg" alt="Saturno">
         <h3>Saturno</h3>
         <p>Famoso por seus grandes anéis.</p>
         <span class="ver"></span>
@@ -121,7 +121,7 @@
 
     <div class="planeta" data-planeta="urano">
         <div class="numero">07</div>
-        <img src="img/urano.jpg" alt="Urano">
+        <img src="img/urano-real.jpg" alt="Urano">
         <h3>Urano</h3>
         <p>Um gigante de gelo azul-esverdeado.</p>
         <span class="ver"></span>
@@ -130,13 +130,79 @@
 
     <div class="planeta" data-planeta="netuno">
         <div class="numero">08</div>
-        <img src="img/netuno.jpg" alt="Netuno">
+        <img src="img/netuno-real.jpg" alt="Netuno">
         <h3>Netuno</h3>
         <p>O planeta mais distante do Sol.</p>
         <span class="ver"></span>
     </div>
 
 </div>
+
+
+<section class="experiencias" id="experiencias">
+
+    <div class="experiencias-cabecalho">
+        <p class="azul">02 / LABORATÓRIO COSMOEDU</p>
+        <h2>Aprenda explorando.</h2>
+        <p>Compare mundos, acompanhe a história do cosmos, teste seus conhecimentos e navegue pelo Sistema Solar.</p>
+    </div>
+
+    <div class="experiencia mapa-interativo">
+        <div class="experiencia-titulo">
+            <span class="experiencia-numero">01</span>
+            <div>
+                <p class="azul">MAPA INTERATIVO</p>
+                <h3>Uma viagem pelo Sistema Solar</h3>
+            </div>
+        </div>
+        <div class="mapa-palco" id="mapa-palco">
+            <div class="mapa-sol"></div>
+            <div class="mapa-orbita mapa-orbita-1"><button class="mapa-planeta mapa-mercurio" data-mapa-planeta="mercurio" aria-label="Explorar Mercúrio"></button></div>
+            <div class="mapa-orbita mapa-orbita-2"><button class="mapa-planeta mapa-venus" data-mapa-planeta="venus" aria-label="Explorar Vênus"></button></div>
+            <div class="mapa-orbita mapa-orbita-3"><button class="mapa-planeta mapa-terra" data-mapa-planeta="terra" aria-label="Explorar Terra"></button></div>
+            <div class="mapa-orbita mapa-orbita-4"><button class="mapa-planeta mapa-marte" data-mapa-planeta="marte" aria-label="Explorar Marte"></button></div>
+            <div class="mapa-orbita mapa-orbita-5"><button class="mapa-planeta mapa-jupiter" data-mapa-planeta="jupiter" aria-label="Explorar Júpiter"></button></div>
+            <div class="mapa-orbita mapa-orbita-6"><button class="mapa-planeta mapa-saturno" data-mapa-planeta="saturno" aria-label="Explorar Saturno"></button></div>
+            <div class="mapa-orbita mapa-orbita-7"><button class="mapa-planeta mapa-urano" data-mapa-planeta="urano" aria-label="Explorar Urano"></button></div>
+            <div class="mapa-orbita mapa-orbita-8"><button class="mapa-planeta mapa-netuno" data-mapa-planeta="netuno" aria-label="Explorar Netuno"></button></div>
+        </div>
+        <div class="mapa-info" id="mapa-info"><strong>Escolha um planeta</strong><span>Clique em qualquer órbita para descobrir sua posição no Sistema Solar.</span></div>
+    </div>
+
+    <div class="experiencia comparador">
+        <div class="experiencia-titulo">
+            <span class="experiencia-numero">02</span>
+            <div>
+                <p class="azul">COMPARADOR DE PLANETAS</p>
+                <h3>Dois mundos lado a lado</h3>
+            </div>
+        </div>
+        <div class="comparador-controles">
+            <label>Primeiro planeta<select id="comparar-um"></select></label>
+            <span class="comparador-versus">VS</span>
+            <label>Segundo planeta<select id="comparar-dois"></select></label>
+        </div>
+        <div class="comparador-tabela" id="comparador-tabela"></div>
+    </div>
+
+    <div class="experiencia linha-tempo">
+        <div class="experiencia-titulo">
+            <span class="experiencia-numero">03</span>
+            <div>
+                <p class="azul">LINHA DO TEMPO</p>
+                <h3>Uma história de bilhões de anos</h3>
+            </div>
+        </div>
+        <div class="tempo-trilha">
+            <article class="tempo-evento ativo"><span>13,8 bi a.C.</span><h4>O Universo nasce</h4><p>O espaço, o tempo e a matéria começam a se expandir a partir do Big Bang.</p></article>
+            <article class="tempo-evento"><span>4,6 bi a.C.</span><h4>Surge o Sistema Solar</h4><p>Uma nuvem de gás e poeira se transforma no Sol e nos planetas.</p></article>
+            <article class="tempo-evento"><span>4,5 bi a.C.</span><h4>A Terra se forma</h4><p>Nosso planeta começa a esfriar e ganha sua atmosfera e seus oceanos.</p></article>
+            <article class="tempo-evento"><span>1969</span><h4>Passos na Lua</h4><p>A missão Apollo 11 leva os primeiros seres humanos à superfície lunar.</p></article>
+            <article class="tempo-evento"><span>2021</span><h4>James Webb</h4><p>O telescópio espacial começa a observar as primeiras galáxias do Universo.</p></article>
+        </div>
+    </div>
+
+</section>
 
 
 <div class="sistema-final">
@@ -205,7 +271,14 @@
 
     <button class="fechar" id="fechar">×</button>
 
-    <img id="modal-imagem" src="" alt="">
+    <div class="modelo-planeta" id="modelo-planeta" role="img" aria-label="Modelo 3D do planeta">
+        <div class="modelo-espaco" aria-hidden="true">
+            <div class="modelo-anel modelo-anel-fundo"></div>
+            <div class="modelo-esfera"></div>
+            <div class="modelo-anel modelo-anel-frente"></div>
+        </div>
+        <span class="modelo-legenda">MODELO 3D <small>arraste para explorar</small></span>
+    </div>
 
     <div class="modal-texto">
 

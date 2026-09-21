@@ -47,78 +47,154 @@
 
     <section class="universo" id="universo">
 
-        <div class="titulo">
-            <p class="azul">02 / ALÉM DOS PLANETAS</p>
+        <div class="hero-universo">
+            <div class="titulo">
+                <p class="azul">02 / ALÉM DOS PLANETAS</p>
 
-            <h2>
-                O Universo<br>
-                é muito maior.
-            </h2>
+                <h2>
+                    O Universo<br>
+                    é muito maior.
+                </h2>
+            </div>
+
+            <div class="descricao-universo">
+                <p>
+                    O espaço contém bilhões de estrelas, galáxias, nebulosas e mistérios que ainda não entendemos por completo.
+                    Cada nova descoberta nos lembra que o cosmos é enorme, dinâmico e fascinante.
+                </p>
+            </div>
+
+            <div class="estatisticas">
+                <div>
+                    <strong>~2 trilhões</strong>
+                    <span>galáxias observáveis</span>
+                </div>
+                <div>
+                    <strong>13,8 bi</strong>
+                    <span>anos de idade</span>
+                </div>
+                <div>
+                    <strong>93 bilhões</strong>
+                    <span>anos-luz de alcance</span>
+                </div>
+            </div>
         </div>
 
-        <div class="universo-cards">
+        <div class="painel-universo">
+            <div class="painel-destaque">
+                <div class="anel-orbita">
+                    <span class="orbita orbita-1"></span>
+                    <span class="orbita orbita-2"></span>
+                    <span class="orbita orbita-3"></span>
+                    <span class="sol-central"></span>
+                </div>
 
-            <div class="card">
-                <div class="icone">✦</div>
-
-                <h3>Estrelas</h3>
-
-                <p>
-                    Grandes esferas de gás extremamente quente que produzem energia e luz.
-                </p>
+                <div class="texto-destaque">
+                    <p class="azul mini">Mapa cósmico</p>
+                    <h3>O cosmos em escala</h3>
+                    <p>
+                        Entre estrelas, poeira e matéria escura, o Universo nos mostra que a exploração do espaço é uma jornada sem fim.
+                    </p>
+                </div>
             </div>
 
-            <div class="card">
-                <div class="icone">◎</div>
+            <div class="universo-cards">
 
-                <h3>Galáxias</h3>
+                <div class="card">
+                    <div class="icone">✦</div>
+                    <h3>Estrelas</h3>
+                    <p>
+                        Grandes esferas de gás extremamente quente que produzem energia e luz.
+                    </p>
+                </div>
 
-                <p>
-                    Grandes conjuntos de estrelas, planetas, gases e poeira unidos pela gravidade.
-                </p>
+                <div class="card">
+                    <div class="icone">◎</div>
+                    <h3>Galáxias</h3>
+                    <p>
+                        Grandes conjuntos de estrelas, planetas, gases e poeira unidos pela gravidade.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="icone">◉</div>
+                    <h3>Exoplanetas</h3>
+                    <p>
+                        Planetas que orbitam estrelas diferentes do nosso Sol.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="icone">✧</div>
+                    <h3>Nebulosas</h3>
+                    <p>
+                        Grandes nuvens de gás e poeira encontradas no espaço.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="icone">◌</div>
+                    <h3>Buracos negros</h3>
+                    <p>
+                        Regiões do espaço com uma gravidade extremamente forte.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="icone">☄</div>
+                    <h3>Cometas</h3>
+                    <p>
+                        Corpos formados principalmente por gelo, poeira e rochas.
+                    </p>
+                </div>
+
             </div>
-
-            <div class="card">
-                <div class="icone">◉</div>
-
-                <h3>Exoplanetas</h3>
-
-                <p>
-                    Planetas que orbitam estrelas diferentes do nosso Sol.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icone">✧</div>
-
-                <h3>Nebulosas</h3>
-
-                <p>
-                    Grandes nuvens de gás e poeira encontradas no espaço.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icone">◌</div>
-
-                <h3>Buracos negros</h3>
-
-                <p>
-                    Regiões do espaço com uma gravidade extremamente forte.
-                </p>
-            </div>
-
-            <div class="card">
-                <div class="icone">☄</div>
-
-                <h3>Cometas</h3>
-
-                <p>
-                    Corpos formados principalmente por gelo, poeira e rochas.
-                </p>
-            </div>
-
         </div>
+
+        <section class="constelacoes" aria-labelledby="titulo-constelacoes">
+            <div class="constelacoes-cabecalho">
+                <p class="azul">03 / MAPA DO CÉU</p>
+                <h2 id="titulo-constelacoes">Encontre uma constelação.</h2>
+                <p>Selecione um desenho no céu para descobrir suas estrelas e a história por trás dele.</p>
+            </div>
+
+            <div class="constelacoes-layout">
+                <div class="ceu-interativo" id="ceu-interativo" aria-label="Mapa interativo de constelações">
+                    <svg class="linhas-constelacao" viewBox="0 0 600 360" aria-hidden="true">
+                        <path data-constelacao-linha="orion" d="M115 80 L205 126 L280 105 M205 126 L230 190 L185 270 M230 190 L305 255 M230 190 L260 285" />
+                        <path data-constelacao-linha="ursa" d="M360 70 L430 62 L485 95 L450 145 L390 136 L360 70 M390 136 L330 180 L275 160" />
+                        <path data-constelacao-linha="cassiopeia" d="M125 300 L190 255 L250 290 L315 245 L380 285" />
+                        <path data-constelacao-linha="cruzeiro" d="M475 245 L530 190 M475 245 L455 300 M475 245 L410 265 M475 245 L490 160" />
+                    </svg>
+                    <button class="estrela estrela-orion-1" data-constelacao="orion" aria-label="Orion, estrela Betelgeuse"></button>
+                    <button class="estrela estrela-orion-2" data-constelacao="orion" aria-label="Orion, estrela Bellatrix"></button>
+                    <button class="estrela estrela-orion-3" data-constelacao="orion" aria-label="Orion, cinturão"></button>
+                    <button class="estrela estrela-orion-4" data-constelacao="orion" aria-label="Orion, Rigel"></button>
+                    <button class="estrela estrela-ursa-1" data-constelacao="ursa" aria-label="Ursa Maior, estrela Dubhe"></button>
+                    <button class="estrela estrela-ursa-2" data-constelacao="ursa" aria-label="Ursa Maior, estrela Merak"></button>
+                    <button class="estrela estrela-ursa-3" data-constelacao="ursa" aria-label="Ursa Maior, estrela Alioth"></button>
+                    <button class="estrela estrela-cassiopeia-1" data-constelacao="cassiopeia" aria-label="Cassiopeia"></button>
+                    <button class="estrela estrela-cassiopeia-2" data-constelacao="cassiopeia" aria-label="Cassiopeia"></button>
+                    <button class="estrela estrela-cruzeiro-1" data-constelacao="cruzeiro" aria-label="Cruzeiro do Sul"></button>
+                    <button class="estrela estrela-cruzeiro-2" data-constelacao="cruzeiro" aria-label="Cruzeiro do Sul"></button>
+                    <button class="estrela estrela-cruzeiro-3" data-constelacao="cruzeiro" aria-label="Cruzeiro do Sul"></button>
+                    <button class="estrela estrela-cruzeiro-4" data-constelacao="cruzeiro" aria-label="Cruzeiro do Sul"></button>
+                    <div class="legenda-ceu">CLIQUE NAS ESTRELAS</div>
+                </div>
+
+                <div class="constelacao-info" id="constelacao-info" aria-live="polite">
+                    <p class="azul">CONSTELAÇÃO SELECIONADA</p>
+                    <h3>Orion</h3>
+                    <p class="constelacao-resumo">Uma das constelações mais reconhecíveis do céu, marcada pelas três estrelas alinhadas do cinturão.</p>
+                    <div class="constelacao-dados">
+                        <div><span>ESTRELA PRINCIPAL</span><strong>Betelgeuse</strong></div>
+                        <div><span>MELHOR VISIBILIDADE</span><strong>Dezembro a março</strong></div>
+                        <div><span>HEMISFÉRIO</span><strong>Ambos</strong></div>
+                    </div>
+                    <p class="constelacao-mito">Na mitologia grega, Orion era um grande caçador colocado entre as estrelas.</p>
+                </div>
+            </div>
+        </section>
 
     </section>
 
